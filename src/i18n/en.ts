@@ -134,7 +134,7 @@ export const en: Translations = {
       title: "Education",
       degree: "Associate Degree in Systems Analysis and Development",
       institution: "FAM — Centro Universitário das Américas",
-      period: "2020 — 2022",
+      period: "2021 — 2023",
     },
     skills: {
       title: "Technical Skills",

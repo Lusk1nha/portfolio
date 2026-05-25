@@ -282,7 +282,7 @@ export const pt: Translations = {
       title: "Formação",
       degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
       institution: "FAM — Centro Universitário das Américas",
-      period: "2020 — 2022",
+      period: "2021 — 2023",
     },
     skills: {
       title: "Habilidades Técnicas",
