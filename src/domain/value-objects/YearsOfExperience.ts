@@ -1,3 +1,5 @@
+import type { Language } from "./Language"
+
 const CAREER_START = new Date("2021-09-01")
 
 export function getYearsOfExperience(): number {
@@ -10,7 +12,14 @@ export function getYearsOfExperience(): number {
   return hasCompletedAnniversary ? years : years - 1
 }
 
-export function getYearsLabel(lang: "pt" | "en"): string {
+const YEARS_LABELS: Record<Language, (n: number) => string> = {
+  pt: (n) => `${n}+ anos`,
+  en: (n) => `${n}+ years`,
+  es: (n) => `${n}+ años`,
+  fr: (n) => `${n}+ ans`,
+}
+
+export function getYearsLabel(lang: Language): string {
   const years = getYearsOfExperience()
-  return lang === "pt" ? `${years}+ anos` : `${years}+ years`
+  return YEARS_LABELS[lang](years)
 }

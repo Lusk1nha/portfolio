@@ -13,7 +13,9 @@ import {
   UserIcon,
 } from "@phosphor-icons/react"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { useSeo } from "@/presentation/hooks/useSeo"
 import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
+import { localText, localTextArray } from "@/domain/value-objects/LocalText"
 import { EXPERIENCES } from "@/infrastructure/data/experiences.data"
 import { STACK_ITEMS } from "@/infrastructure/data/stack.data"
 import type { StackGroup } from "@/domain/entities/StackItem"
@@ -87,7 +89,7 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-0.5">
         <div>
           <h3 className="text-sm font-semibold text-(--fg)">
-            {exp.role[language]}
+            {localText(exp.role, language)}
           </h3>
           <p
             className="text-[12px] font-medium"
@@ -95,7 +97,7 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
           >
             {exp.company}
             <span className="ml-2 font-normal text-(--muted)">
-              · {exp.location[language]} · {exp.modality[language]}
+              · {localText(exp.location, language)} · {localText(exp.modality, language)}
             </span>
           </p>
         </div>
@@ -105,11 +107,11 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
       </div>
 
       <p className="mt-2 text-[12px] leading-relaxed text-(--muted)">
-        {exp.description[language]}
+        {localText(exp.description, language)}
       </p>
 
       <ul className="mt-2 space-y-1">
-        {exp.highlights[language].map((highlight: string, index: number) => (
+        {localTextArray(exp.highlights, language).map((highlight: string, index: number) => (
           <li key={index} className="flex gap-2 text-[11px] text-(--muted)">
             <span
               className="mt-0.5 shrink-0"
@@ -142,6 +144,13 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
 // ============================================================================
 
 export function CvPage() {
+  useSeo({
+    title: "Resume / CV",
+    description:
+      "Currículo de Lucas Pedro da Hora — Full Stack Developer. Experiência profissional, formação, stack técnica e projetos. Disponível para download em PDF.",
+    path: "/cv",
+  })
+
   const { t, language } = useLanguage()
   const yearsLabel = getYearsLabel(language)
   const printRef = useRef<HTMLDivElement>(null)

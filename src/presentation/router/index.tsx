@@ -55,10 +55,22 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: page(HomePage), errorElement: <ErrorPage /> },
-      { path: "projects", element: page(ProjectsPage), errorElement: <ErrorPage /> },
-      { path: "experience", element: page(ExperiencePage), errorElement: <ErrorPage /> },
+      {
+        path: "projects",
+        element: page(ProjectsPage),
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "experience",
+        element: page(ExperiencePage),
+        errorElement: <ErrorPage />,
+      },
       { path: "stack", element: page(StackPage), errorElement: <ErrorPage /> },
-      { path: "contact", element: page(ContactPage), errorElement: <ErrorPage /> },
+      {
+        path: "contact",
+        element: page(ContactPage),
+        errorElement: <ErrorPage />,
+      },
       { path: "cv", element: page(CvPage), errorElement: <ErrorPage /> },
       { path: "*", element: page(NotFoundPage) },
     ],

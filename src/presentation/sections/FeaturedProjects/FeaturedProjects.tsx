@@ -14,6 +14,7 @@ import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
 import { Button } from "@/presentation/components/ui/Button/Button"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { localText } from "@/domain/value-objects/LocalText"
 import { LOCAL_PROJECTS } from "@/infrastructure/data/projects.data"
 import { StaticProjectRepository } from "@/infrastructure/repositories/StaticProjectRepository"
 import { GetFeaturedProjects } from "@/application/use-cases/GetFeaturedProjects"
@@ -84,7 +85,7 @@ export function FeaturedProjects() {
                 </div>
 
                 <p className="mb-4 flex-1 text-[11px] leading-relaxed text-(--muted)">
-                  {project.description[language]}
+                  {localText(project.description, language)}
                 </p>
 
                 {project.stack.length > 0 && (

@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://lucaspedro.dev/</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/"/>
   </url>
+
+  <url>
+    <loc>https://lucaspedro.dev/projects</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/projects"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/projects"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/projects"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/projects"/>
+  </url>
+
+  <url>
+    <loc>https://lucaspedro.dev/experience</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/experience"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/experience"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/experience"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/experience"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/experience"/>
+  </url>
+
+  <url>
+    <loc>https://lucaspedro.dev/stack</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/stack"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/stack"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/stack"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/stack"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/stack"/>
+  </url>
+
+  <url>
+    <loc>https://lucaspedro.dev/contact</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/contact"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/contact"/>
+  </url>
+
+  <url>
+    <loc>https://lucaspedro.dev/cv</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/cv"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/cv"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/cv"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/cv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/cv"/>
+  </url>
+
 </urlset>

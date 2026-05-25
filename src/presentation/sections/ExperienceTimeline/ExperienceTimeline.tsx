@@ -4,6 +4,7 @@ import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionT
 import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { localText, localTextArray } from "@/domain/value-objects/LocalText"
 import { StaticExperienceRepository } from "@/infrastructure/repositories/StaticExperienceRepository"
 import { GetExperiences } from "@/application/use-cases/GetExperiences"
 
@@ -79,7 +80,7 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                     <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
                       <div>
                         <h3 className="text-[13px] font-semibold text-(--fg)">
-                          {exp.role[language]}
+                          {localText(exp.role, language)}
                         </h3>
                         <p
                           className="text-[12px] font-medium"
@@ -104,13 +105,13 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                       </span>
                       <span className="flex items-center gap-1">
                         <MapPinIcon size={10} />
-                        {exp.location[language]} · {exp.modality[language]}
+                        {localText(exp.location, language)} · {localText(exp.modality, language)}
                       </span>
                     </div>
 
                     {/* Highlights */}
                     <ul className="mb-4 space-y-1.5">
-                      {exp.highlights[language].map((h, j) => (
+                      {localTextArray(exp.highlights, language).map((h, j) => (
                         <li
                           key={j}
                           className="flex items-start gap-2 text-[11px] text-(--muted)"

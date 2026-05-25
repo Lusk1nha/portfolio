@@ -3,8 +3,10 @@ import { FeaturedProjects } from "@/presentation/sections/FeaturedProjects/Featu
 import { ExperienceTimeline } from "@/presentation/sections/ExperienceTimeline/ExperienceTimeline"
 import { StackGrid } from "@/presentation/sections/StackGrid/StackGrid"
 import { ContactSection } from "@/presentation/sections/ContactSection/ContactSection"
+import { useSeo } from "@/presentation/hooks/useSeo"
 
 export function HomePage() {
+  useSeo({ path: "/" })
   return (
     <>
       <Hero />

@@ -19,7 +19,8 @@ export class ErrorBoundary extends Component<Props, State> {
   // ─── Runtime errors: event handlers, async callbacks, unhandled throws ─────
   private handleWindowError = (event: ErrorEvent) => {
     event.preventDefault()
-    const error = event.error instanceof Error ? event.error : new Error(event.message)
+    const error =
+      event.error instanceof Error ? event.error : new Error(event.message)
     this.setState({ error })
   }
 
@@ -39,7 +40,10 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentWillUnmount() {
     window.removeEventListener("error", this.handleWindowError)
-    window.removeEventListener("unhandledrejection", this.handleUnhandledRejection)
+    window.removeEventListener(
+      "unhandledrejection",
+      this.handleUnhandledRejection
+    )
   }
 
   reset = () => {

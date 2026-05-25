@@ -11,6 +11,8 @@ import { Card } from "@/presentation/components/ui/Card/Card"
 import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { useSeo } from "@/presentation/hooks/useSeo"
+import { localText } from "@/domain/value-objects/LocalText"
 import { LOCAL_PROJECTS } from "@/infrastructure/data/projects.data"
 import { StaticProjectRepository } from "@/infrastructure/repositories/StaticProjectRepository"
 import { GetAllProjects } from "@/application/use-cases/GetAllProjects"
@@ -30,6 +32,13 @@ const itemVariants: Variants = {
 }
 
 export function ProjectsPage() {
+  useSeo({
+    title: "Projects",
+    description:
+      "Projetos open source e trabalhos de Lucas Pedro da Hora — aplicações web com React, Node.js, Rust e TypeScript. Veja repositórios no GitHub com stars, forks e demos ao vivo.",
+    path: "/projects",
+  })
+
   const { t, language } = useLanguage()
   const [projects, setProjects] = useState<Project[]>(LOCAL_PROJECTS)
 
@@ -61,7 +70,7 @@ export function ProjectsPage() {
                 </div>
 
                 <p className="mb-4 flex-1 text-[11px] leading-relaxed text-(--muted)">
-                  {project.description[language]}
+                  {localText(project.description, language)}
                 </p>
 
                 {project.stack.length > 0 && (
