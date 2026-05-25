@@ -2,6 +2,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }],
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
   "headers": [
     {
       "source": "/assets/(.*)",
