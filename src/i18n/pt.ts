@@ -158,7 +158,7 @@ export const pt: Translations = {
     cv: "~/curriculo",
   },
   hero: {
-    badge: "● disponível para projetos",
+    badge: "● apaixonado por arquitetura e código",
     greeting: "Olá, eu sou",
     name: "Lucas Pedro da Hora",
     title: "Full Stack Developer",
@@ -167,7 +167,7 @@ export const pt: Translations = {
       "Desenvolvedor com {years} de experiência na criação de sistemas web de alta performance. Foco em arquitetura escalável, código limpo e integração de IA.",
     cta_projects: "Ver projetos",
     cta_contact: "Entrar em contato",
-    cta_cv: "Baixar CV",
+    cta_cv: "Ver currículo",
     location: "São Paulo, SP",
     available: "Disponível",
     terminal: {
@@ -179,7 +179,7 @@ export const pt: Translations = {
       line6: "$ cat location.txt",
       line7: "> São Paulo, SP · Híbrido / Remoto",
       line8: "$ status --check",
-      line9: "> ● disponível para novos projetos",
+      line9: "> ● sempre construindo algo novo",
     },
   },
   about: {
@@ -261,11 +261,11 @@ export const pt: Translations = {
     linkedin_label: "LinkedIn",
     github_label: "GitHub",
     cta: "Enviar email",
-    cta_cv: "Baixar CV",
-    open_to: "Aberto para",
+    cta_cv: "Ver currículo",
+    open_to: "Me interessa",
     opportunities: [
-      "Projetos freelance",
-      "Posições CLT/PJ",
+      "Arquitetura de software",
+      "Integração de IA",
       "Consultorias técnicas",
       "Open source",
     ],

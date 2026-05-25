@@ -10,7 +10,7 @@ export const en: Translations = {
     cv: "~/resume",
   },
   hero: {
-    badge: "● available for projects",
+    badge: "● passionate about architecture & code",
     greeting: "Hey, I am",
     name: "Lucas Pedro da Hora",
     title: "Full Stack Developer",
@@ -19,7 +19,7 @@ export const en: Translations = {
       "Developer with {years} of experience building high-performance web systems. Focused on scalable architecture, clean code, and AI integration.",
     cta_projects: "View projects",
     cta_contact: "Get in touch",
-    cta_cv: "Download CV",
+    cta_cv: "View resume",
     location: "São Paulo, SP",
     available: "Available",
     terminal: {
@@ -31,7 +31,7 @@ export const en: Translations = {
       line6: "$ cat location.txt",
       line7: "> São Paulo, SP · Hybrid / Remote",
       line8: "$ status --check",
-      line9: "> ● available for new projects",
+      line9: "> ● always building something new",
     },
   },
   about: {
@@ -113,11 +113,11 @@ export const en: Translations = {
     linkedin_label: "LinkedIn",
     github_label: "GitHub",
     cta: "Send email",
-    cta_cv: "Download CV",
-    open_to: "Open to",
+    cta_cv: "View resume",
+    open_to: "Interested in",
     opportunities: [
-      "Freelance projects",
-      "Full-time positions",
+      "Software architecture",
+      "AI integration",
       "Technical consulting",
       "Open source",
     ],
