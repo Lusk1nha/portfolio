@@ -29,7 +29,7 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
 
   return (
     <section className="px-4 py-16 sm:px-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionTitle
           title={t.experience.title}
           subtitle={t.experience.subtitle}

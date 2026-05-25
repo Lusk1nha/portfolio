@@ -4,7 +4,6 @@ import {
   LinkedinLogoIcon,
   EnvelopeIcon,
   MapPinIcon,
-  DownloadSimpleIcon,
 } from "@phosphor-icons/react"
 import { Link } from "react-router-dom"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
@@ -86,7 +85,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* Left: copy */}
           <motion.div
@@ -164,12 +163,11 @@ export function Hero() {
                   {t.hero.cta_contact}
                 </Button>
               </Link>
-              <a href="/lucas-pedro-cv.pdf" download="Lucas-Pedro-CV.pdf">
+              <Link to="/cv">
                 <Button variant="ghost" size="md">
-                  <DownloadSimpleIcon size={14} />
                   {t.hero.cta_cv}
                 </Button>
-              </a>
+              </Link>
             </motion.div>
 
             <motion.div

@@ -5,6 +5,7 @@ export interface Translations {
     experience: string
     stack: string
     contact: string
+    cv: string
   }
   hero: {
     badge: string
@@ -100,6 +101,32 @@ export interface Translations {
     open_to: string
     opportunities: string[]
   }
+  cv: {
+    title: string
+    subtitle: string
+    print: string
+    summary: {
+      title: string
+      text: string
+    }
+    education: {
+      title: string
+      degree: string
+      institution: string
+      period: string
+    }
+    skills: {
+      title: string
+    }
+    languages: {
+      title: string
+      portuguese: string
+      english: string
+    }
+    experience: {
+      title: string
+    }
+  }
   footer: {
     built_with: string
     and: string
@@ -128,6 +155,7 @@ export const pt: Translations = {
     experience: "~/experiencia",
     stack: "~/stack",
     contact: "~/contato",
+    cv: "~/curriculo",
   },
   hero: {
     badge: "● disponível para projetos",
@@ -241,6 +269,32 @@ export const pt: Translations = {
       "Consultorias técnicas",
       "Open source",
     ],
+  },
+  cv: {
+    title: 'Currículo',
+    subtitle: '$ cat curriculo.md',
+    print: 'Imprimir / Salvar PDF',
+    summary: {
+      title: 'Resumo Profissional',
+      text: 'Desenvolvedor Full Stack com {years} de experiência na criação de sistemas web de alta performance. Especialista em React, Node.js, Nest.js e Rust, com sólida experiência em arquitetura de microsserviços, DDD, Clean Architecture e integração de IA. Atuei como Tech Lead, orientando times e definindo padrões de governança técnica.',
+    },
+    education: {
+      title: 'Formação',
+      degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
+      institution: 'FAM — Centro Universitário das Américas',
+      period: '2020 — 2022',
+    },
+    skills: {
+      title: 'Habilidades Técnicas',
+    },
+    languages: {
+      title: 'Idiomas',
+      portuguese: 'Português — Nativo',
+      english: 'Inglês — Intermediário (leitura, escrita e conversação)',
+    },
+    experience: {
+      title: 'Experiência Profissional',
+    },
   },
   footer: {
     built_with: "Feito com",

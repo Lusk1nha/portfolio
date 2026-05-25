@@ -12,6 +12,7 @@ const NAV_ROUTES = [
   { key: "experience", path: "/experience" },
   { key: "stack", path: "/stack" },
   { key: "contact", path: "/contact" },
+  { key: "cv", path: "/cv" },
 ] as const
 
 export function Header() {
@@ -25,6 +26,7 @@ export function Header() {
     experience: t.nav.experience,
     stack: t.nav.stack,
     contact: t.nav.contact,
+    cv: t.nav.cv,
   }
 
   return (
@@ -32,7 +34,7 @@ export function Header() {
       {/* Accent top strip */}
       <div className="h-0.5 w-full" style={{ background: "var(--accent)" }} />
 
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         {/* Logo */}
         <NavLink
           to="/"

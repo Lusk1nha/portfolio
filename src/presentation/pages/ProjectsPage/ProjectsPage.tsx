@@ -39,7 +39,7 @@ export function ProjectsPage() {
 
   return (
     <div className="px-4 py-16 sm:px-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionTitle title={t.projects.title} subtitle={t.projects.subtitle} />
 
         <motion.div

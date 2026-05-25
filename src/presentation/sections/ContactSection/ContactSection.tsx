@@ -3,7 +3,6 @@ import {
   GithubLogoIcon,
   LinkedinLogoIcon,
   EnvelopeSimpleIcon,
-  DownloadSimpleIcon,
 } from "@phosphor-icons/react"
 import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionTitle"
 import { Button } from "@/presentation/components/ui/Button/Button"
@@ -93,13 +92,12 @@ export function ContactSection() {
                   {t.contact.cta}
                 </Button>
               </a>
-              <a href="/lucas-pedro-cv.pdf" download="Lucas-Pedro-CV.pdf">
+              <a href="/cv">
                 <Button
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  <DownloadSimpleIcon size={14} />
                   {t.contact.cta_cv}
                 </Button>
               </a>

@@ -20,7 +20,7 @@ export function StackGrid({ compact = false }: { compact?: boolean }) {
 
   return (
     <section className="px-4 py-16 sm:px-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <SectionTitle title={t.stack.title} subtitle={t.stack.subtitle} />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
