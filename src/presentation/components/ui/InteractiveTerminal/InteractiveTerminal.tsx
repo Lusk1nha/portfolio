@@ -1,176 +1,212 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { getYearsLabel } from '@/domain/value-objects/YearsOfExperience'
+import { useState, useRef, useEffect, useCallback } from "react"
+import { useNavigate, type NavigateFunction } from "react-router-dom"
+import { motion, AnimatePresence } from "framer-motion"
+import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
 
-type LineType = 'command' | 'output' | 'accent' | 'error' | 'blank'
+// ============================================================================
+// 1. TIPOS E UTILITÁRIOS (Domain)
+// ============================================================================
 
-interface TermLine {
-  id: number
+export type LineType = "command" | "output" | "accent" | "error" | "blank"
+
+export interface TermLine {
+  id: string
   type: LineType
   content: string
 }
 
-let _id = 0
-const uid = () => ++_id
+// Usar crypto.randomUUID() previne bugs de id em re-renders ou StrictMode
+const uid = () => crypto.randomUUID()
 
 const INITIAL_LINES: TermLine[] = [
-  { id: uid(), type: 'accent', content: 'lucas-portfolio v1.0.0' },
-  { id: uid(), type: 'output', content: "type 'help' to see available commands" },
-  { id: uid(), type: 'blank', content: '' },
+  { id: uid(), type: "accent", content: "lucas-portfolio v1.0.0" },
+  {
+    id: uid(),
+    type: "output",
+    content: "type 'help' to see available commands",
+  },
+  { id: uid(), type: "blank", content: "" },
 ]
 
-const HELP_LINES = [
-  '  help         — show this message',
-  '  whoami       — about this person',
-  '  skills       — technical stack',
-  '  contact      — contact information',
-  '  projects     — go to /projects',
-  '  experience   — go to /experience',
-  '  stack        — go to /stack',
-  '  cv           — go to /cv',
-  '  ls           — list pages',
-  '  clear        — clear terminal',
-]
+// ============================================================================
+// 2. PADRÃO STRATEGY: LÓGICA DE COMANDOS (Open/Closed Principle)
+// ============================================================================
 
-const ALL_COMMANDS = [
-  'help', 'whoami', 'skills', 'contact',
-  'projects', 'experience', 'stack', 'cv',
-  'ls', 'clear', 'home',
-]
+// Contexto injetado nos comandos para que eles possam interagir com o sistema
+interface CommandContext {
+  push: (...lines: Omit<TermLine, "id">[]) => void
+  clear: () => void
+  navigate: NavigateFunction
+  years: string
+}
 
-export function InteractiveTerminal() {
+// Helper para evitar repetição de código na navegação (DRY)
+const navigateTo = (
+  ctx: CommandContext,
+  path: string,
+  label: string = path
+) => {
+  ctx.push({ type: "accent", content: `  → navigating to ${label}...` })
+  setTimeout(() => ctx.navigate(path), 600)
+}
+
+// Dicionário de comandos. Adicionar um novo comando é tão simples quanto adicionar uma nova chave aqui.
+const COMMAND_REGISTRY: Record<
+  string,
+  (ctx: CommandContext, args?: string[]) => void
+> = {
+  help: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "output", content: "  help         — show this message" },
+      { type: "output", content: "  whoami       — about this person" },
+      { type: "output", content: "  skills       — technical stack" },
+      { type: "output", content: "  contact      — contact information" },
+      { type: "output", content: "  projects     — go to /projects" },
+      { type: "output", content: "  experience   — go to /experience" },
+      { type: "output", content: "  stack        — go to /stack" },
+      { type: "output", content: "  cv           — go to /cv" },
+      { type: "output", content: "  ls           — list pages" },
+      { type: "output", content: "  clear        — clear terminal" },
+      { type: "blank", content: "" }
+    )
+  },
+  whoami: ({ push, years }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "accent", content: "  Lucas Pedro da Hora" },
+      { type: "output", content: "  Full Stack Developer" },
+      { type: "output", content: `  ${years} of experience` },
+      { type: "output", content: "  São Paulo, SP · Hybrid / Remote" },
+      { type: "output", content: "  React · Node.js · Rust · TypeScript" },
+      { type: "blank", content: "" }
+    )
+  },
+  skills: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      {
+        type: "output",
+        content: "  frontend    React · Next.js · TypeScript · Tailwind",
+      },
+      {
+        type: "output",
+        content: "  backend     Nest.js · Node.js · FastAPI · Rust",
+      },
+      {
+        type: "output",
+        content: "  cloud       GCP · Docker · RabbitMQ · PostgreSQL",
+      },
+      {
+        type: "output",
+        content: "  ai          GPT-4 · Azure OpenAI · Embeddings",
+      },
+      {
+        type: "output",
+        content: "  arch        DDD · Clean Arch · SOLID · Microservices",
+      },
+      { type: "blank", content: "" }
+    )
+  },
+  contact: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "output", content: "  email      lucaspedro517@gmail.com" },
+      { type: "output", content: "  linkedin   /in/olucaspedro" },
+      { type: "output", content: "  github     @Lusk1nha" },
+      { type: "blank", content: "" }
+    )
+  },
+  ls: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      {
+        type: "accent",
+        content: "  home/  projects/  experience/  stack/  contact/  cv/",
+      },
+      { type: "blank", content: "" }
+    )
+  },
+  clear: ({ clear }) => clear(),
+
+  // Navegações
+  projects: (ctx) => navigateTo(ctx, "/projects"),
+  experience: (ctx) => navigateTo(ctx, "/experience"),
+  stack: (ctx) => navigateTo(ctx, "/stack"),
+  cv: (ctx) => navigateTo(ctx, "/cv"),
+  home: (ctx) => navigateTo(ctx, "/", "home"),
+}
+
+// Aliases para comandos existentes
+const ALIASES: Record<string, string> = {
+  "?": "help",
+  "ls -la": "ls",
+  cls: "clear",
+  exp: "experience",
+  resume: "cv",
+  "cd projects": "projects",
+  "cd /projects": "projects",
+  "cd experience": "experience",
+  "cd stack": "stack",
+  "cd cv": "cv",
+  "cd home": "home",
+  "cd /": "home",
+}
+
+const ALL_COMMANDS = Object.keys(COMMAND_REGISTRY)
+
+// ============================================================================
+// 3. HOOK CUSTOMIZADO (Single Responsibility Principle)
+// ============================================================================
+
+function useTerminal() {
   const navigate = useNavigate()
-  const years = getYearsLabel('en')
+  const years = getYearsLabel("en")
+
   const [lines, setLines] = useState<TermLine[]>(INITIAL_LINES)
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState("")
   const [cmdHistory, setCmdHistory] = useState<string[]>([])
   const [historyIdx, setHistoryIdx] = useState(-1)
-  const [tabState, setTabState] = useState<{ matches: string[]; idx: number } | null>(null)
-  const outputRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [tabState, setTabState] = useState<{
+    matches: string[]
+    idx: number
+  } | null>(null)
 
-  useEffect(() => {
-    const el = outputRef.current
-    if (el) el.scrollTop = el.scrollHeight
-  }, [lines])
-
-  const push = useCallback((...newLines: Omit<TermLine, 'id'>[]) => {
+  const push = useCallback((...newLines: Omit<TermLine, "id">[]) => {
     setLines((prev) => [...prev, ...newLines.map((l) => ({ ...l, id: uid() }))])
   }, [])
+
+  const clear = useCallback(() => setLines(INITIAL_LINES), [])
 
   const handleCommand = useCallback(
     (raw: string) => {
       const cmd = raw.trim().toLowerCase()
       if (!cmd) return
 
-      push({ type: 'command', content: `$ ${raw}` })
+      push({ type: "command", content: `$ ${raw}` })
       setCmdHistory((h) => [raw, ...h])
       setHistoryIdx(-1)
 
-      switch (cmd) {
-        case 'help':
-        case '?':
-          push({ type: 'blank', content: '' })
-          HELP_LINES.forEach((l) => push({ type: 'output', content: l }))
-          push({ type: 'blank', content: '' })
-          break
+      // Resolve aliases (ex: "?" vira "help")
+      const resolvedCmd = ALIASES[cmd] || cmd
+      const action = COMMAND_REGISTRY[resolvedCmd]
 
-        case 'whoami':
-          push(
-            { type: 'blank', content: '' },
-            { type: 'accent', content: '  Lucas Pedro da Hora' },
-            { type: 'output', content: '  Full Stack Developer' },
-            { type: 'output', content: `  ${years} of experience` },
-            { type: 'output', content: '  São Paulo, SP · Hybrid / Remote' },
-            { type: 'output', content: '  React · Node.js · Rust · TypeScript' },
-            { type: 'blank', content: '' },
-          )
-          break
-
-        case 'skills':
-          push(
-            { type: 'blank', content: '' },
-            { type: 'output', content: '  frontend    React · Next.js · TypeScript · Tailwind' },
-            { type: 'output', content: '  backend     Nest.js · Node.js · FastAPI · Rust' },
-            { type: 'output', content: '  cloud       GCP · Docker · RabbitMQ · PostgreSQL' },
-            { type: 'output', content: '  ai          GPT-4 · Azure OpenAI · Embeddings' },
-            { type: 'output', content: '  arch        DDD · Clean Arch · SOLID · Microservices' },
-            { type: 'blank', content: '' },
-          )
-          break
-
-        case 'contact':
-          push(
-            { type: 'blank', content: '' },
-            { type: 'output', content: '  email      lucaspedro517@gmail.com' },
-            { type: 'output', content: '  linkedin   /in/olucaspedro' },
-            { type: 'output', content: '  github     @Lusk1nha' },
-            { type: 'blank', content: '' },
-          )
-          break
-
-        case 'ls':
-        case 'ls -la':
-          push(
-            { type: 'blank', content: '' },
-            { type: 'accent', content: '  home/  projects/  experience/  stack/  contact/  cv/' },
-            { type: 'blank', content: '' },
-          )
-          break
-
-        case 'projects':
-        case 'cd projects':
-        case 'cd /projects':
-          push({ type: 'accent', content: '  → navigating to /projects...' })
-          setTimeout(() => navigate('/projects'), 600)
-          break
-
-        case 'experience':
-        case 'exp':
-        case 'cd experience':
-          push({ type: 'accent', content: '  → navigating to /experience...' })
-          setTimeout(() => navigate('/experience'), 600)
-          break
-
-        case 'stack':
-        case 'cd stack':
-          push({ type: 'accent', content: '  → navigating to /stack...' })
-          setTimeout(() => navigate('/stack'), 600)
-          break
-
-        case 'cv':
-        case 'resume':
-        case 'cd cv':
-          push({ type: 'accent', content: '  → navigating to /cv...' })
-          setTimeout(() => navigate('/cv'), 600)
-          break
-
-        case 'home':
-        case 'cd home':
-        case 'cd /':
-          push({ type: 'accent', content: '  → navigating to home...' })
-          setTimeout(() => navigate('/'), 600)
-          break
-
-        case 'clear':
-        case 'cls':
-          setLines(INITIAL_LINES)
-          return
-
-        default:
-          push(
-            { type: 'error', content: `  bash: ${cmd}: command not found` },
-            { type: 'output', content: "  type 'help' for available commands" },
-            { type: 'blank', content: '' },
-          )
+      if (action) {
+        const context: CommandContext = { push, clear, navigate, years }
+        action(context)
+      } else {
+        push(
+          { type: "error", content: `  bash: ${cmd}: command not found` },
+          { type: "output", content: "  type 'help' for available commands" },
+          { type: "blank", content: "" }
+        )
       }
     },
-    [navigate, push, years],
+    [push, clear, navigate, years]
   )
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Tab') {
+    if (e.key === "Tab") {
       e.preventDefault()
       if (tabState) {
         const nextIdx = (tabState.idx + 1) % tabState.matches.length
@@ -178,14 +214,18 @@ export function InteractiveTerminal() {
         setInput(tabState.matches[nextIdx])
         return
       }
-      const matches = ALL_COMMANDS.filter((c) => c.startsWith(input.toLowerCase()))
+
+      const matches = ALL_COMMANDS.filter((c) =>
+        c.startsWith(input.toLowerCase())
+      )
       if (matches.length === 0) return
+
       setInput(matches[0])
       if (matches.length > 1) {
         push(
-          { type: 'command', content: `$ ${input}` },
-          { type: 'accent', content: '  ' + matches.join('   ') },
-          { type: 'blank', content: '' },
+          { type: "command", content: `$ ${input}` },
+          { type: "accent", content: "  " + matches.join("   ") },
+          { type: "blank", content: "" }
         )
         setTabState({ matches, idx: 0 })
       }
@@ -194,42 +234,69 @@ export function InteractiveTerminal() {
 
     setTabState(null)
 
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleCommand(input)
-      setInput('')
-    } else if (e.key === 'ArrowUp') {
+      setInput("")
+    } else if (e.key === "ArrowUp") {
       e.preventDefault()
       const next = Math.min(historyIdx + 1, cmdHistory.length - 1)
       setHistoryIdx(next)
-      setInput(cmdHistory[next] ?? '')
-    } else if (e.key === 'ArrowDown') {
+      setInput(cmdHistory[next] ?? "")
+    } else if (e.key === "ArrowDown") {
       e.preventDefault()
       const next = Math.max(historyIdx - 1, -1)
       setHistoryIdx(next)
-      setInput(next === -1 ? '' : cmdHistory[next])
+      setInput(next === -1 ? "" : cmdHistory[next])
     }
   }
 
-  const lineClass: Record<LineType, string> = {
-    command: 'text-(--fg)',
-    output: 'text-(--muted)',
-    error: '',
-    accent: '',
-    blank: '',
+  return {
+    lines,
+    input,
+    setInput,
+    tabState,
+    setTabState,
+    handleKeyDown,
   }
+}
+
+// ============================================================================
+// 4. COMPONENTE VISUAL (Focado apenas em renderizar UI)
+// ============================================================================
+
+const LINE_STYLES: Record<LineType, string> = {
+  command: "text-(--fg)",
+  output: "text-(--muted)",
+  error: "text-(--destructive)",
+  accent: "text-(--accent)",
+  blank: "",
+}
+
+export function InteractiveTerminal() {
+  const { lines, input, setInput, setTabState, handleKeyDown } = useTerminal()
+
+  const outputRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight
+    }
+  }, [lines])
 
   return (
     <div
-      className="flex cursor-text flex-col overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono text-[12px]"
-      style={{ height: '380px' }}
+      className="flex h-95 cursor-text flex-col overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono text-[12px]"
       onClick={() => inputRef.current?.focus()}
     >
-      {/* Chrome */}
+      {/* Header / Chrome */}
       <div className="flex shrink-0 items-center gap-1.5 border-b border-(--border) bg-(--surface-2) px-3 py-2">
         <span className="size-2.5 rounded-full bg-red-500/70" />
         <span className="size-2.5 rounded-full bg-yellow-500/70" />
         <span className="size-2.5 rounded-full bg-green-500/70" />
-        <span className="ml-2 text-[10px] text-(--muted)">lucas@portfolio:~</span>
+        <span className="ml-2 text-[10px] text-(--muted)">
+          lucas@portfolio:~
+        </span>
       </div>
 
       {/* Output */}
@@ -241,16 +308,9 @@ export function InteractiveTerminal() {
               initial={{ opacity: 0, y: 2 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.12 }}
-              className={`leading-5 ${lineClass[line.type]}`}
+              className={`leading-5 ${LINE_STYLES[line.type]}`}
             >
-              {line.type === 'accent' && (
-                <span style={{ color: 'var(--accent)' }}>{line.content}</span>
-              )}
-              {line.type === 'error' && (
-                <span style={{ color: 'var(--destructive)' }}>{line.content}</span>
-              )}
-              {(line.type === 'command' || line.type === 'output' || line.type === 'blank') &&
-                line.content}
+              {line.content}
             </motion.div>
           ))}
         </AnimatePresence>
@@ -258,15 +318,17 @@ export function InteractiveTerminal() {
 
       {/* Input */}
       <div className="flex shrink-0 items-center gap-2 border-t border-(--border) px-3 py-2">
-        <span style={{ color: 'var(--accent)' }}>$</span>
+        <span className="text-(--accent)">$</span>
         <input
           ref={inputRef}
           type="text"
           value={input}
-          onChange={(e) => { setInput(e.target.value); setTabState(null) }}
+          onChange={(e) => {
+            setInput(e.target.value)
+            setTabState(null)
+          }}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent text-(--fg) outline-none placeholder:text-(--muted)/40"
-          style={{ caretColor: 'var(--accent)' }}
+          className="flex-1 bg-transparent text-(--fg) caret-(--accent) outline-none placeholder:text-(--muted)/40"
           placeholder="type a command..."
           autoComplete="off"
           spellCheck={false}
