@@ -113,6 +113,7 @@ export interface Translations {
       success_message: string
       error_title: string
       error_message: string
+      rate_limited_message: string
       retry: string
     }
   }
@@ -120,6 +121,8 @@ export interface Translations {
     title: string
     subtitle: string
     print: string
+    download: string
+    download_loading: string
     summary: {
       title: string
       text: string
@@ -297,6 +300,7 @@ export const pt: Translations = {
       success_message: "Obrigado pelo contato. Responderei em breve.",
       error_title: "Erro ao enviar",
       error_message: "Algo deu errado. Tente novamente ou use o email diretamente.",
+      rate_limited_message: "Muitas tentativas. Aguarde um momento antes de enviar novamente.",
       retry: "Tentar novamente",
     },
   },
@@ -304,6 +308,8 @@ export const pt: Translations = {
     title: "Currículo",
     subtitle: "$ cat curriculo.md",
     print: "Imprimir / Salvar PDF",
+    download: "Baixar PDF",
+    download_loading: "Gerando PDF...",
     summary: {
       title: "Resumo Profissional",
       text: "Desenvolvedor Full Stack com {years} de experiência na criação de sistemas web de alta performance. Especialista em React, Node.js, Nest.js e Rust, com sólida experiência em arquitetura de microsserviços, DDD, Clean Architecture e integração de IA. Atuei como Tech Lead, orientando times e definindo padrões de governança técnica.",

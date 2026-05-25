@@ -134,6 +134,7 @@ export const fr: Translations = {
       success_message: "Merci de m'avoir contacté. Je vous répondrai bientôt.",
       error_title: "Échec de l'envoi",
       error_message: "Une erreur est survenue. Réessayez ou utilisez l'email directement.",
+      rate_limited_message: "Trop de tentatives. Veuillez patienter avant d'envoyer à nouveau.",
       retry: "Réessayer",
     },
   },
@@ -141,6 +142,8 @@ export const fr: Translations = {
     title: "CV",
     subtitle: "$ cat cv.md",
     print: "Imprimer / Enregistrer en PDF",
+    download: "Télécharger le PDF",
+    download_loading: "Génération du PDF...",
     summary: {
       title: "Résumé Professionnel",
       text: "Développeur Full Stack avec {years} ans d'expérience dans la création de systèmes web haute performance. Spécialiste en React, Node.js, Nest.js et Rust, avec une solide expertise en architecture de microservices, DDD, Clean Architecture et intégration de l'IA. A travaillé en tant que Tech Lead, guidant les équipes et définissant les normes de gouvernance technique.",

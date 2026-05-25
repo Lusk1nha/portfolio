@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react"
+import { lazy, Suspense, useMemo, useRef } from "react"
 import { motion } from "framer-motion"
 import {
   PrinterIcon,
@@ -19,6 +19,12 @@ import { localText, localTextArray } from "@/domain/value-objects/LocalText"
 import { EXPERIENCES } from "@/infrastructure/data/experiences.data"
 import { STACK_ITEMS } from "@/infrastructure/data/stack.data"
 import type { StackGroup } from "@/domain/entities/StackItem"
+
+const CvDownloadButton = lazy(() =>
+  import("@/presentation/pdf/CvDownloadButton").then((m) => ({
+    default: m.CvDownloadButton,
+  }))
+)
 
 // ============================================================================
 // 1. CONSTANTES E UTILITÁRIOS
@@ -170,13 +176,27 @@ export function CvPage() {
       {/* Botão de impressão */}
       <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between print:hidden">
         <p className="text-[11px] text-(--muted)">{t.cv.subtitle}</p>
-        <button
-          onClick={() => window.print()}
-          className="flex items-center gap-1.5 rounded-sm border border-(--border) bg-(--surface) px-3 py-1.5 text-[11px] text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--fg)"
-        >
-          <PrinterIcon size={13} />
-          {t.cv.print}
-        </button>
+        <div className="flex items-center gap-2">
+          <Suspense
+            fallback={
+              <button
+                disabled
+                className="flex items-center gap-1.5 rounded-sm border border-(--accent)/30 bg-(--accent)/5 px-3 py-1.5 text-[11px] text-(--accent) opacity-60"
+              >
+                {t.cv.download_loading}
+              </button>
+            }
+          >
+            <CvDownloadButton language={language} t={t} />
+          </Suspense>
+          <button
+            onClick={() => window.print()}
+            className="flex items-center gap-1.5 rounded-sm border border-(--border) bg-(--surface) px-3 py-1.5 text-[11px] text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--fg)"
+          >
+            <PrinterIcon size={13} />
+            {t.cv.print}
+          </button>
+        </div>
       </div>
 
       {/* Corpo do CV */}

@@ -134,6 +134,7 @@ export const en: Translations = {
       success_message: "Thanks for reaching out. I'll get back to you soon.",
       error_title: "Failed to send",
       error_message: "Something went wrong. Try again or use the email directly.",
+      rate_limited_message: "Too many attempts. Please wait a moment before sending again.",
       retry: "Try again",
     },
   },
@@ -141,6 +142,8 @@ export const en: Translations = {
     title: "Resume",
     subtitle: "$ cat resume.md",
     print: "Print / Save as PDF",
+    download: "Download PDF",
+    download_loading: "Generating PDF...",
     summary: {
       title: "Professional Summary",
       text: "Full Stack Developer with {years} of experience building high-performance web systems. Specialist in React, Node.js, Nest.js, and Rust, with solid expertise in microservices architecture, DDD, Clean Architecture, and AI integration. Worked as Tech Lead, guiding teams and defining technical governance standards.",

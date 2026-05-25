@@ -134,6 +134,7 @@ export const es: Translations = {
       success_message: "Gracias por contactarme. Te responderé pronto.",
       error_title: "Error al enviar",
       error_message: "Algo salió mal. Inténtalo de nuevo o usa el email directamente.",
+      rate_limited_message: "Demasiados intentos. Espera un momento antes de enviar de nuevo.",
       retry: "Intentar de nuevo",
     },
   },
@@ -141,6 +142,8 @@ export const es: Translations = {
     title: "Currículum",
     subtitle: "$ cat cv.md",
     print: "Imprimir / Guardar como PDF",
+    download: "Descargar PDF",
+    download_loading: "Generando PDF...",
     summary: {
       title: "Resumen Profesional",
       text: "Desarrollador Full Stack con {years} años de experiencia construyendo sistemas web de alto rendimiento. Especialista en React, Node.js, Nest.js y Rust, con sólida experiencia en arquitectura de microservicios, DDD, Clean Architecture e integración de IA. Trabajé como Tech Lead, guiando equipos y definiendo estándares de gobernanza técnica.",

@@ -36,7 +36,7 @@ const CONTACT_LINKS = [
   },
 ]
 
-type FormState = "idle" | "submitting" | "success" | "error"
+type FormState = "idle" | "submitting" | "success" | "error" | "ratelimited"
 
 export function ContactSection() {
   const { t } = useLanguage()
@@ -63,6 +63,10 @@ export function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...fields, _gotcha: honeypot }),
       })
+      if (res.status === 429) {
+        setFormState("ratelimited")
+        return
+      }
       if (!res.ok) throw new Error()
       setFormState("success")
     } catch {
@@ -226,14 +230,16 @@ export function ContactSection() {
                   />
                 </div>
 
-                {formState === "error" && (
+                {(formState === "error" || formState === "ratelimited") && (
                   <div className="mt-3 flex items-center gap-2 rounded-sm border border-red-500/30 bg-red-500/8 px-3 py-2">
                     <WarningCircleIcon
                       size={14}
                       className="shrink-0 text-red-400"
                     />
                     <p className="text-[11px] text-red-400">
-                      {t.contact.form.error_message}
+                      {formState === "ratelimited"
+                        ? t.contact.form.rate_limited_message
+                        : t.contact.form.error_message}
                     </p>
                   </div>
                 )}
@@ -243,7 +249,7 @@ export function ContactSection() {
                     type="submit"
                     variant="default"
                     size="lg"
-                    disabled={formState === "submitting"}
+                    disabled={formState === "submitting" || formState === "ratelimited"}
                     className="w-full sm:w-auto"
                   >
                     {formState === "submitting"

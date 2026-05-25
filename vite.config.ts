@@ -40,6 +40,9 @@ export default defineConfig({
           if (id.includes('node_modules/@octokit')) {
             return 'octokit'
           }
+          if (id.includes('node_modules/@react-pdf') || id.includes('node_modules/pdfkit') || id.includes('node_modules/fontkit') || id.includes('node_modules/linebreak')) {
+            return 'pdf'
+          }
         },
       },
     },
