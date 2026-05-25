@@ -33,6 +33,12 @@ const HELP_LINES = [
   '  clear        — clear terminal',
 ]
 
+const ALL_COMMANDS = [
+  'help', 'whoami', 'skills', 'contact',
+  'projects', 'experience', 'stack', 'cv',
+  'ls', 'clear', 'home',
+]
+
 export function InteractiveTerminal() {
   const navigate = useNavigate()
   const years = getYearsLabel('en')
@@ -40,6 +46,7 @@ export function InteractiveTerminal() {
   const [input, setInput] = useState('')
   const [cmdHistory, setCmdHistory] = useState<string[]>([])
   const [historyIdx, setHistoryIdx] = useState(-1)
+  const [tabState, setTabState] = useState<{ matches: string[]; idx: number } | null>(null)
   const outputRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -163,6 +170,30 @@ export function InteractiveTerminal() {
   )
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      if (tabState) {
+        const nextIdx = (tabState.idx + 1) % tabState.matches.length
+        setTabState({ ...tabState, idx: nextIdx })
+        setInput(tabState.matches[nextIdx])
+        return
+      }
+      const matches = ALL_COMMANDS.filter((c) => c.startsWith(input.toLowerCase()))
+      if (matches.length === 0) return
+      setInput(matches[0])
+      if (matches.length > 1) {
+        push(
+          { type: 'command', content: `$ ${input}` },
+          { type: 'accent', content: '  ' + matches.join('   ') },
+          { type: 'blank', content: '' },
+        )
+        setTabState({ matches, idx: 0 })
+      }
+      return
+    }
+
+    setTabState(null)
+
     if (e.key === 'Enter') {
       handleCommand(input)
       setInput('')
@@ -232,7 +263,7 @@ export function InteractiveTerminal() {
           ref={inputRef}
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => { setInput(e.target.value); setTabState(null) }}
           onKeyDown={handleKeyDown}
           className="flex-1 bg-transparent text-(--fg) outline-none placeholder:text-(--muted)/40"
           style={{ caretColor: 'var(--accent)' }}
