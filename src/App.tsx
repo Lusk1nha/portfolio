@@ -10,6 +10,7 @@ import {
 import { ErrorBoundary } from "@/presentation/components/ui/ErrorBoundary/ErrorBoundary"
 
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 export default function App() {
   const [showBoot, setShowBoot] = useState(shouldShowBoot)
@@ -25,6 +26,7 @@ export default function App() {
         </ThemeProvider>
       </ErrorBoundary>
       <Analytics />
+      <SpeedInsights />
     </>
   )
 }

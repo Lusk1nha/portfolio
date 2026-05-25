@@ -100,6 +100,21 @@ export interface Translations {
     cta_cv: string
     open_to: string
     opportunities: string[]
+    form: {
+      name_label: string
+      name_placeholder: string
+      email_label: string
+      email_placeholder: string
+      message_label: string
+      message_placeholder: string
+      submit: string
+      submitting: string
+      success_title: string
+      success_message: string
+      error_title: string
+      error_message: string
+      retry: string
+    }
   }
   cv: {
     title: string
@@ -269,6 +284,21 @@ export const pt: Translations = {
       "Consultorias técnicas",
       "Open source",
     ],
+    form: {
+      name_label: "Nome",
+      name_placeholder: "Seu nome",
+      email_label: "Email",
+      email_placeholder: "seu@email.com",
+      message_label: "Mensagem",
+      message_placeholder: "Olá Lucas, gostaria de conversar sobre...",
+      submit: "Enviar mensagem",
+      submitting: "Enviando...",
+      success_title: "Mensagem enviada!",
+      success_message: "Obrigado pelo contato. Responderei em breve.",
+      error_title: "Erro ao enviar",
+      error_message: "Algo deu errado. Tente novamente ou use o email diretamente.",
+      retry: "Tentar novamente",
+    },
   },
   cv: {
     title: "Currículo",
