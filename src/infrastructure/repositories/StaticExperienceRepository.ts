@@ -1,6 +1,6 @@
-import type { IExperienceRepository } from '@/domain/repositories/IExperienceRepository'
-import type { Experience } from '@/domain/entities/Experience'
-import { EXPERIENCES } from '../data/experiences.data'
+import type { IExperienceRepository } from "@/domain/repositories/IExperienceRepository"
+import type { Experience } from "@/domain/entities/Experience"
+import { EXPERIENCES } from "../data/experiences.data"
 
 export class StaticExperienceRepository implements IExperienceRepository {
   getAll(): Experience[] {

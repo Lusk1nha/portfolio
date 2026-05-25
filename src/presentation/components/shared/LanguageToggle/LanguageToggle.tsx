@@ -1,4 +1,4 @@
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
 
 export function LanguageToggle() {
   const { toggleLanguage, t } = useLanguage()

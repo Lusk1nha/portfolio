@@ -1,17 +1,23 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowRightIcon, GithubLogoIcon, StarIcon, GitForkIcon, ArrowSquareOutIcon } from '@phosphor-icons/react'
-import { SectionTitle } from '@/presentation/components/ui/SectionTitle/SectionTitle'
-import { Card } from '@/presentation/components/ui/Card/Card'
-import { Tag } from '@/presentation/components/ui/Tag/Tag'
-import { Badge } from '@/presentation/components/ui/Badge/Badge'
-import { Button } from '@/presentation/components/ui/Button/Button'
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
-import { LOCAL_PROJECTS } from '@/infrastructure/data/projects.data'
-import { StaticProjectRepository } from '@/infrastructure/repositories/StaticProjectRepository'
-import { GetFeaturedProjects } from '@/application/use-cases/GetFeaturedProjects'
-import type { Project } from '@/domain/entities/Project'
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
+import {
+  ArrowRightIcon,
+  GithubLogoIcon,
+  StarIcon,
+  GitForkIcon,
+  ArrowSquareOutIcon,
+} from "@phosphor-icons/react"
+import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionTitle"
+import { Card } from "@/presentation/components/ui/Card/Card"
+import { Tag } from "@/presentation/components/ui/Tag/Tag"
+import { Badge } from "@/presentation/components/ui/Badge/Badge"
+import { Button } from "@/presentation/components/ui/Button/Button"
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { LOCAL_PROJECTS } from "@/infrastructure/data/projects.data"
+import { StaticProjectRepository } from "@/infrastructure/repositories/StaticProjectRepository"
+import { GetFeaturedProjects } from "@/application/use-cases/GetFeaturedProjects"
+import type { Project } from "@/domain/entities/Project"
 
 const repository = new StaticProjectRepository()
 const getFeaturedProjects = new GetFeaturedProjects(repository)
@@ -60,15 +66,17 @@ export function FeaturedProjects() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, margin: "-40px" }}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
               <Card hover className="flex h-full flex-col p-5">
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="text-[13px] font-semibold text-(--fg) leading-snug">{project.name}</h3>
-                  <div className="flex items-center gap-1 shrink-0">
+                <div className="mb-3 flex items-start justify-between gap-2">
+                  <h3 className="text-[13px] leading-snug font-semibold text-(--fg)">
+                    {project.name}
+                  </h3>
+                  <div className="flex shrink-0 items-center gap-1">
                     <Badge variant="muted" className="text-[10px]">
                       {t.projects.status[project.status]}
                     </Badge>
@@ -88,7 +96,8 @@ export function FeaturedProjects() {
                 )}
 
                 <div className="flex items-center justify-between border-t border-(--border) pt-3">
-                  {(project.stars !== undefined || project.forks !== undefined) ? (
+                  {project.stars !== undefined ||
+                  project.forks !== undefined ? (
                     <div className="flex items-center gap-3 text-[10px] text-(--muted)">
                       {project.stars !== undefined && (
                         <span className="flex items-center gap-1">

@@ -1,10 +1,10 @@
 export type StackGroup =
-  | 'frontend'
-  | 'backend'
-  | 'cloud'
-  | 'ai'
-  | 'architecture'
-  | 'tools'
+  | "frontend"
+  | "backend"
+  | "cloud"
+  | "ai"
+  | "architecture"
+  | "tools"
 
 export interface StackItem {
   readonly id: string

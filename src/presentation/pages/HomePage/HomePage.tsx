@@ -1,8 +1,8 @@
-import { Hero } from '@/presentation/sections/Hero/Hero'
-import { FeaturedProjects } from '@/presentation/sections/FeaturedProjects/FeaturedProjects'
-import { ExperienceTimeline } from '@/presentation/sections/ExperienceTimeline/ExperienceTimeline'
-import { StackGrid } from '@/presentation/sections/StackGrid/StackGrid'
-import { ContactSection } from '@/presentation/sections/ContactSection/ContactSection'
+import { Hero } from "@/presentation/sections/Hero/Hero"
+import { FeaturedProjects } from "@/presentation/sections/FeaturedProjects/FeaturedProjects"
+import { ExperienceTimeline } from "@/presentation/sections/ExperienceTimeline/ExperienceTimeline"
+import { StackGrid } from "@/presentation/sections/StackGrid/StackGrid"
+import { ContactSection } from "@/presentation/sections/ContactSection/ContactSection"
 
 export function HomePage() {
   return (

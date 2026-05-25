@@ -1,4 +1,4 @@
-import type { StackItem, StackGroup } from '../entities/StackItem'
+import type { StackItem, StackGroup } from "../entities/StackItem"
 
 export interface IStackRepository {
   getAll(): StackItem[]

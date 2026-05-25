@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 
 interface TerminalLine {
   text: string
-  type?: 'command' | 'output' | 'comment'
+  type?: "command" | "output" | "comment"
 }
 
 interface TerminalWindowProps {
@@ -21,29 +21,33 @@ const lineVariants = {
 }
 
 function LineContent({ line }: { line: TerminalLine }) {
-  if (line.type === 'command') {
+  if (line.type === "command") {
     return (
       <span>
-        <span style={{ color: 'var(--accent)' }}>$ </span>
-        <span style={{ color: 'var(--fg)' }}>{line.text}</span>
+        <span style={{ color: "var(--accent)" }}>$ </span>
+        <span style={{ color: "var(--fg)" }}>{line.text}</span>
       </span>
     )
   }
-  if (line.type === 'comment') {
-    return <span style={{ color: 'var(--muted)' }}># {line.text}</span>
+  if (line.type === "comment") {
+    return <span style={{ color: "var(--muted)" }}># {line.text}</span>
   }
   return (
     <span>
-      <span style={{ color: 'var(--success)' }}>▶ </span>
-      <span style={{ color: 'var(--fg)' }}>{line.text}</span>
+      <span style={{ color: "var(--success)" }}>▶ </span>
+      <span style={{ color: "var(--fg)" }}>{line.text}</span>
     </span>
   )
 }
 
-export function TerminalWindow({ title = 'terminal', lines, className = '' }: TerminalWindowProps) {
+export function TerminalWindow({
+  title = "terminal",
+  lines,
+  className = "",
+}: TerminalWindowProps) {
   return (
     <div
-      className={`rounded-sm border border-(--border) bg-(--surface) overflow-hidden font-mono text-sm ${className}`}
+      className={`overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono text-sm ${className}`}
     >
       {/* Window chrome */}
       <div className="flex items-center gap-2 border-b border-(--border) px-4 py-2.5">
@@ -54,7 +58,7 @@ export function TerminalWindow({ title = 'terminal', lines, className = '' }: Te
       </div>
 
       {/* Terminal content */}
-      <div className="p-4 space-y-1 text-[12px] leading-relaxed">
+      <div className="space-y-1 p-4 text-[12px] leading-relaxed">
         {lines.map((line, i) => (
           <motion.div
             key={i}
@@ -70,7 +74,7 @@ export function TerminalWindow({ title = 'terminal', lines, className = '' }: Te
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
-          style={{ color: 'var(--accent)' }}
+          style={{ color: "var(--accent)" }}
         >
           ▋
         </motion.span>

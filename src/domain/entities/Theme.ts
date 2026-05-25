@@ -1,4 +1,4 @@
-import type { ThemeName, ThemeMode } from '../value-objects/ThemeName'
+import type { ThemeName, ThemeMode } from "../value-objects/ThemeName"
 
 export interface Theme {
   readonly name: ThemeName

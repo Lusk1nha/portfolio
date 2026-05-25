@@ -1,31 +1,36 @@
-import { motion } from 'framer-motion'
-import { GithubLogoIcon, LinkedinLogoIcon, EnvelopeSimpleIcon } from '@phosphor-icons/react'
-import { SectionTitle } from '@/presentation/components/ui/SectionTitle/SectionTitle'
-import { Button } from '@/presentation/components/ui/Button/Button'
-import { Card } from '@/presentation/components/ui/Card/Card'
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
+import { motion } from "framer-motion"
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  EnvelopeSimpleIcon,
+  DownloadSimpleIcon,
+} from "@phosphor-icons/react"
+import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionTitle"
+import { Button } from "@/presentation/components/ui/Button/Button"
+import { Card } from "@/presentation/components/ui/Card/Card"
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
 
 const CONTACT_LINKS = [
   {
-    key: 'github',
+    key: "github",
     icon: GithubLogoIcon,
-    href: 'https://github.com/Lusk1nha',
-    handle: '@Lusk1nha',
-    labelKey: 'github_label' as const,
+    href: "https://github.com/Lusk1nha",
+    handle: "@Lusk1nha",
+    labelKey: "github_label" as const,
   },
   {
-    key: 'linkedin',
+    key: "linkedin",
     icon: LinkedinLogoIcon,
-    href: 'https://www.linkedin.com/in/olucaspedro/',
-    handle: '/in/olucaspedro',
-    labelKey: 'linkedin_label' as const,
+    href: "https://www.linkedin.com/in/olucaspedro/",
+    handle: "/in/olucaspedro",
+    labelKey: "linkedin_label" as const,
   },
   {
-    key: 'email',
+    key: "email",
     icon: EnvelopeSimpleIcon,
-    href: 'mailto:lucaspedro517@gmail.com',
-    handle: 'lucaspedro517@gmail.com',
-    labelKey: 'email_label' as const,
+    href: "mailto:lucaspedro517@gmail.com",
+    handle: "lucaspedro517@gmail.com",
+    labelKey: "email_label" as const,
   },
 ]
 
@@ -50,39 +55,59 @@ export function ContactSection() {
             </p>
 
             <div className="grid gap-3 sm:grid-cols-3">
-              {CONTACT_LINKS.map(({ key, icon: Icon, href, handle, labelKey }) => (
-                <a
-                  key={key}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-sm border border-(--border) bg-(--surface-2) px-3 py-3 transition-all hover:border-(--accent)/50 hover:bg-(--surface-hover)"
-                >
-                  <Icon
-                    size={16}
-                    className="shrink-0 text-(--muted) transition-colors group-hover:text-(--accent)"
-                    style={{ color: undefined }}
-                  />
-                  <div className="min-w-0">
-                    <p className="text-[10px] text-(--muted)">{t.contact[labelKey]}</p>
-                    <p className="truncate text-[11px] font-medium text-(--fg)">{handle}</p>
-                  </div>
-                </a>
-              ))}
+              {CONTACT_LINKS.map(
+                ({ key, icon: Icon, href, handle, labelKey }) => (
+                  <a
+                    key={key}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 rounded-sm border border-(--border) bg-(--surface-2) px-3 py-3 transition-all hover:border-(--accent)/50 hover:bg-(--surface-hover)"
+                  >
+                    <Icon
+                      size={16}
+                      className="shrink-0 text-(--muted) transition-colors group-hover:text-(--accent)"
+                      style={{ color: undefined }}
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[10px] text-(--muted)">
+                        {t.contact[labelKey]}
+                      </p>
+                      <p className="truncate text-[11px] font-medium text-(--fg)">
+                        {handle}
+                      </p>
+                    </div>
+                  </a>
+                )
+              )}
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a href="mailto:lucaspedro517@gmail.com">
-                <Button variant="default" size="lg" className="w-full sm:w-auto">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   <EnvelopeSimpleIcon size={14} />
                   {t.contact.cta}
+                </Button>
+              </a>
+              <a href="/lucas-pedro-cv.pdf" download="Lucas-Pedro-CV.pdf">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  <DownloadSimpleIcon size={14} />
+                  {t.contact.cta_cv}
                 </Button>
               </a>
             </div>
           </Card>
 
           <div className="rounded-sm border border-(--border) bg-(--surface) p-5">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-(--muted)">
+            <p className="mb-3 text-[11px] font-semibold tracking-widest text-(--muted) uppercase">
               {t.contact.open_to}
             </p>
             <div className="flex flex-wrap gap-2">

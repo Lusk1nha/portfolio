@@ -1,5 +1,5 @@
-import type { IProjectRepository } from '@/domain/repositories/IProjectRepository'
-import type { Project } from '@/domain/entities/Project'
+import type { IProjectRepository } from "@/domain/repositories/IProjectRepository"
+import type { Project } from "@/domain/entities/Project"
 
 export class GetAllProjects {
   constructor(private readonly repository: IProjectRepository) {}

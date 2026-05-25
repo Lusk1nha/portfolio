@@ -1,9 +1,9 @@
-import { Octokit } from '@octokit/rest'
-import type { Project } from '@/domain/entities/Project'
+import { Octokit } from "@octokit/rest"
+import type { Project } from "@/domain/entities/Project"
 
 const octokit = new Octokit()
 
-const GITHUB_USERNAME = 'Lusk1nha'
+const GITHUB_USERNAME = "Lusk1nha"
 
 export interface GithubRepo {
   id: number
@@ -16,7 +16,9 @@ export interface GithubRepo {
   forks_count: number
 }
 
-export async function fetchGithubRepo(repoName: string): Promise<GithubRepo | null> {
+export async function fetchGithubRepo(
+  repoName: string
+): Promise<GithubRepo | null> {
   try {
     const { data } = await octokit.repos.get({
       owner: GITHUB_USERNAME,
@@ -34,16 +36,16 @@ export function mapGithubRepoToProject(repo: GithubRepo): Project {
     slug: repo.name,
     name: repo.name,
     description: {
-      pt: repo.description ?? 'Sem descrição',
-      en: repo.description ?? 'No description',
+      pt: repo.description ?? "Sem descrição",
+      en: repo.description ?? "No description",
     },
     githubUrl: repo.html_url,
-    source: 'github',
+    source: "github",
     featured: true,
     stack: repo.language ? [repo.language] : [],
     language: repo.language ?? undefined,
     stars: repo.stargazers_count,
     forks: repo.forks_count,
-    status: 'active',
+    status: "active",
   }
 }

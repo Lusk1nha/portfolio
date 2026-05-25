@@ -1,4 +1,4 @@
-export type ProjectSource = 'local' | 'github'
+export type ProjectSource = "local" | "github"
 
 export interface Project {
   readonly id: string
@@ -13,5 +13,5 @@ export interface Project {
   readonly language?: string
   readonly stars?: number
   readonly forks?: number
-  readonly status: 'active' | 'wip' | 'archived'
+  readonly status: "active" | "wip" | "archived"
 }

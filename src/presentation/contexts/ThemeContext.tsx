@@ -1,10 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import type { ThemeName } from '@/domain/value-objects/ThemeName'
-import { DEFAULT_THEME, THEME_NAMES } from '@/domain/value-objects/ThemeName'
-import { THEMES } from '@/infrastructure/data/themes.data'
-import type { Theme } from '@/domain/entities/Theme'
+import { createContext, useContext, useEffect, useState } from "react"
+import type { ThemeName } from "@/domain/value-objects/ThemeName"
+import { DEFAULT_THEME, THEME_NAMES } from "@/domain/value-objects/ThemeName"
+import { THEMES } from "@/infrastructure/data/themes.data"
+import type { Theme } from "@/domain/entities/Theme"
 
-const STORAGE_KEY = 'portfolio:theme'
+const STORAGE_KEY = "portfolio:theme"
 
 interface ThemeContextValue {
   theme: ThemeName
@@ -27,7 +27,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeName>(resolveStoredTheme)
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
+    document.documentElement.setAttribute("data-theme", theme)
     localStorage.setItem(STORAGE_KEY, theme)
   }, [theme])
 
@@ -47,6 +47,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext)
-  if (!ctx) throw new Error('useTheme must be used within ThemeProvider')
+  if (!ctx) throw new Error("useTheme must be used within ThemeProvider")
   return ctx
 }

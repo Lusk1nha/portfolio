@@ -1,17 +1,35 @@
-import { motion } from 'framer-motion'
-import { GithubLogoIcon, LinkedinLogoIcon, EnvelopeIcon, MapPinIcon } from '@phosphor-icons/react'
-import { Link } from 'react-router-dom'
-import { Badge } from '@/presentation/components/ui/Badge/Badge'
-import { Button } from '@/presentation/components/ui/Button/Button'
-import { TerminalWindow } from '@/presentation/components/ui/TerminalWindow/TerminalWindow'
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
-import { getYearsLabel } from '@/domain/value-objects/YearsOfExperience'
-import avatarSrc from '@/assets/lucas-pedro.jpg'
+import { motion } from "framer-motion"
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  DownloadSimpleIcon,
+} from "@phosphor-icons/react"
+import { Link } from "react-router-dom"
+import { Badge } from "@/presentation/components/ui/Badge/Badge"
+import { Button } from "@/presentation/components/ui/Button/Button"
+import { TerminalWindow } from "@/presentation/components/ui/TerminalWindow/TerminalWindow"
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
+import avatarSrc from "@/assets/lucas-pedro.jpg"
 
 const SOCIAL_LINKS = [
-  { icon: GithubLogoIcon, href: 'https://github.com/Lusk1nha', label: 'GitHub' },
-  { icon: LinkedinLogoIcon, href: 'https://www.linkedin.com/in/olucaspedro/', label: 'LinkedIn' },
-  { icon: EnvelopeIcon, href: 'mailto:lucaspedro517@gmail.com', label: 'Email' },
+  {
+    icon: GithubLogoIcon,
+    href: "https://github.com/Lusk1nha",
+    label: "GitHub",
+  },
+  {
+    icon: LinkedinLogoIcon,
+    href: "https://www.linkedin.com/in/olucaspedro/",
+    label: "LinkedIn",
+  },
+  {
+    icon: EnvelopeIcon,
+    href: "mailto:lucaspedro517@gmail.com",
+    label: "Email",
+  },
 ]
 
 const containerVariants = {
@@ -32,15 +50,18 @@ export function Hero() {
   const yearsLabel = getYearsLabel(language)
 
   const terminalLines = [
-    { text: 'whoami', type: 'command' as const },
-    { text: 'lucas-pedro-da-hora', type: 'output' as const },
-    { text: 'cat skills.txt', type: 'command' as const },
-    { text: 'React · Node.js · Rust · TypeScript', type: 'output' as const },
-    { text: 'DDD · Clean Architecture · Microservices', type: 'output' as const },
-    { text: `experience --years`, type: 'command' as const },
-    { text: yearsLabel + ' de experiência', type: 'output' as const },
-    { text: 'status --check', type: 'command' as const },
-    { text: t.hero.terminal.line9.replace('> ', ''), type: 'output' as const },
+    { text: "whoami", type: "command" as const },
+    { text: "lucas-pedro-da-hora", type: "output" as const },
+    { text: "cat skills.txt", type: "command" as const },
+    { text: "React · Node.js · Rust · TypeScript", type: "output" as const },
+    {
+      text: "DDD · Clean Architecture · Microservices",
+      type: "output" as const,
+    },
+    { text: `experience --years`, type: "command" as const },
+    { text: yearsLabel + " de experiência", type: "output" as const },
+    { text: "status --check", type: "command" as const },
+    { text: t.hero.terminal.line9.replace("> ", ""), type: "output" as const },
   ]
 
   return (
@@ -53,14 +74,15 @@ export function Hero() {
             linear-gradient(var(--border) 1px, transparent 1px),
             linear-gradient(90deg, var(--border) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px',
+          backgroundSize: "40px 40px",
           opacity: 0.3,
         }}
       />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 0%, transparent 60%, var(--bg) 100%)',
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 0%, transparent 60%, var(--bg) 100%)",
         }}
       />
 
@@ -78,7 +100,7 @@ export function Hero() {
               <div className="relative inline-block">
                 <div
                   className="absolute -inset-0.5 rounded-full opacity-60 blur-sm"
-                  style={{ background: 'var(--accent)' }}
+                  style={{ background: "var(--accent)" }}
                 />
                 <img
                   src={avatarSrc}
@@ -86,8 +108,8 @@ export function Hero() {
                   className="relative size-20 rounded-full object-cover ring-2 ring-(--accent) ring-offset-2 ring-offset-(--bg)"
                 />
                 <span
-                  className="absolute bottom-0.5 right-0.5 size-3.5 rounded-full border-2 border-(--bg)"
-                  style={{ background: 'var(--success)' }}
+                  className="absolute right-0.5 bottom-0.5 size-3.5 rounded-full border-2 border-(--bg)"
+                  style={{ background: "var(--success)" }}
                   title="Online"
                 />
               </div>
@@ -101,10 +123,13 @@ export function Hero() {
 
             <motion.div variants={itemVariants} className="space-y-1">
               <p className="text-sm text-(--muted)">{t.hero.greeting}</p>
-              <h1 className="text-3xl font-bold leading-tight text-(--fg) sm:text-4xl">
+              <h1 className="text-3xl leading-tight font-bold text-(--fg) sm:text-4xl">
                 {t.hero.name}
               </h1>
-              <p className="text-lg font-semibold" style={{ color: 'var(--accent)' }}>
+              <p
+                className="text-lg font-semibold"
+                style={{ color: "var(--accent)" }}
+              >
                 {t.hero.title}
               </p>
               <p className="text-sm text-(--muted)">{t.hero.subtitle}</p>
@@ -114,15 +139,21 @@ export function Hero() {
               variants={itemVariants}
               className="max-w-md text-sm leading-relaxed text-(--muted)"
             >
-              {t.hero.description.replace('{years}', yearsLabel)}
+              {t.hero.description.replace("{years}", yearsLabel)}
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-1.5 text-[11px] text-(--muted)">
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-1.5 text-[11px] text-(--muted)"
+            >
               <MapPinIcon size={12} />
               {t.hero.location}
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-2.5">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-2.5"
+            >
               <Link to="/projects">
                 <Button variant="default" size="md">
                   {t.hero.cta_projects}
@@ -133,9 +164,18 @@ export function Hero() {
                   {t.hero.cta_contact}
                 </Button>
               </Link>
+              <a href="/lucas-pedro-cv.pdf" download="Lucas-Pedro-CV.pdf">
+                <Button variant="ghost" size="md">
+                  <DownloadSimpleIcon size={14} />
+                  {t.hero.cta_cv}
+                </Button>
+              </a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-2">
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-2"
+            >
               {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

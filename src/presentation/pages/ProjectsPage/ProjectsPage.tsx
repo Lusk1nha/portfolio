@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
-import { motion, type Variants } from 'framer-motion'
-import { GithubLogoIcon, StarIcon, GitForkIcon, ArrowSquareOutIcon } from '@phosphor-icons/react'
-import { SectionTitle } from '@/presentation/components/ui/SectionTitle/SectionTitle'
-import { Card } from '@/presentation/components/ui/Card/Card'
-import { Tag } from '@/presentation/components/ui/Tag/Tag'
-import { Badge } from '@/presentation/components/ui/Badge/Badge'
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
-import { LOCAL_PROJECTS } from '@/infrastructure/data/projects.data'
-import { StaticProjectRepository } from '@/infrastructure/repositories/StaticProjectRepository'
-import { GetAllProjects } from '@/application/use-cases/GetAllProjects'
-import type { Project } from '@/domain/entities/Project'
+import { useEffect, useState } from "react"
+import { motion, type Variants } from "framer-motion"
+import {
+  GithubLogoIcon,
+  StarIcon,
+  GitForkIcon,
+  ArrowSquareOutIcon,
+} from "@phosphor-icons/react"
+import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionTitle"
+import { Card } from "@/presentation/components/ui/Card/Card"
+import { Tag } from "@/presentation/components/ui/Tag/Tag"
+import { Badge } from "@/presentation/components/ui/Badge/Badge"
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { LOCAL_PROJECTS } from "@/infrastructure/data/projects.data"
+import { StaticProjectRepository } from "@/infrastructure/repositories/StaticProjectRepository"
+import { GetAllProjects } from "@/application/use-cases/GetAllProjects"
+import type { Project } from "@/domain/entities/Project"
 
 const repository = new StaticProjectRepository()
 const getAllProjects = new GetAllProjects(repository)
@@ -47,7 +52,7 @@ export function ProjectsPage() {
             <motion.div key={project.id} variants={itemVariants}>
               <Card hover className="flex h-full flex-col p-5">
                 <div className="mb-3 flex items-start justify-between gap-2">
-                  <h3 className="text-[13px] font-semibold leading-snug text-(--fg)">
+                  <h3 className="text-[13px] leading-snug font-semibold text-(--fg)">
                     {project.name}
                   </h3>
                   <Badge variant="muted" className="shrink-0 text-[10px]">

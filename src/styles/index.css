@@ -32,7 +32,9 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 * {

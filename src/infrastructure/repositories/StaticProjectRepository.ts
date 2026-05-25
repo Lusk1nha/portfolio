@@ -1,7 +1,7 @@
-import type { IProjectRepository } from '@/domain/repositories/IProjectRepository'
-import type { Project } from '@/domain/entities/Project'
-import { LOCAL_PROJECTS, FEATURED_GITHUB_SLUGS } from '../data/projects.data'
-import { fetchGithubRepo, mapGithubRepoToProject } from '../github/GithubClient'
+import type { IProjectRepository } from "@/domain/repositories/IProjectRepository"
+import type { Project } from "@/domain/entities/Project"
+import { LOCAL_PROJECTS, FEATURED_GITHUB_SLUGS } from "../data/projects.data"
+import { fetchGithubRepo, mapGithubRepoToProject } from "../github/GithubClient"
 
 const GITHUB_TIMEOUT_MS = 4000
 
@@ -38,8 +38,11 @@ export class StaticProjectRepository implements IProjectRepository {
 
       return results
         .filter(
-          (r): r is PromiseFulfilledResult<NonNullable<Awaited<ReturnType<typeof fetchGithubRepo>>>> =>
-            r.status === 'fulfilled' && r.value !== null
+          (
+            r
+          ): r is PromiseFulfilledResult<
+            NonNullable<Awaited<ReturnType<typeof fetchGithubRepo>>>
+          > => r.status === "fulfilled" && r.value !== null
         )
         .map((r) => mapGithubRepoToProject(r.value))
     } catch {

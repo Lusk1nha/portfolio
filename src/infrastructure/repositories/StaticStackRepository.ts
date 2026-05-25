@@ -1,6 +1,6 @@
-import type { IStackRepository } from '@/domain/repositories/IStackRepository'
-import type { StackItem, StackGroup } from '@/domain/entities/StackItem'
-import { STACK_ITEMS } from '../data/stack.data'
+import type { IStackRepository } from "@/domain/repositories/IStackRepository"
+import type { StackItem, StackGroup } from "@/domain/entities/StackItem"
+import { STACK_ITEMS } from "../data/stack.data"
 
 export class StaticStackRepository implements IStackRepository {
   getAll(): StackItem[] {

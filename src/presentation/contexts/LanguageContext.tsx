@@ -1,11 +1,11 @@
-import { createContext, useContext, useState } from 'react'
-import type { Language } from '@/domain/value-objects/Language'
-import { DEFAULT_LANGUAGE } from '@/domain/value-objects/Language'
-import { pt } from '@/i18n/pt'
-import { en } from '@/i18n/en'
-import type { Translations } from '@/i18n/pt'
+import { createContext, useContext, useState } from "react"
+import type { Language } from "@/domain/value-objects/Language"
+import { DEFAULT_LANGUAGE } from "@/domain/value-objects/Language"
+import { pt } from "@/i18n/pt"
+import { en } from "@/i18n/en"
+import type { Translations } from "@/i18n/pt"
 
-const STORAGE_KEY = 'portfolio:language'
+const STORAGE_KEY = "portfolio:language"
 
 interface LanguageContextValue {
   language: Language
@@ -20,7 +20,7 @@ const TRANSLATIONS: Record<Language, Translations> = { pt, en }
 
 function resolveStoredLanguage(): Language {
   const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored === 'pt' || stored === 'en') return stored
+  if (stored === "pt" || stored === "en") return stored
   return DEFAULT_LANGUAGE
 }
 
@@ -33,7 +33,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }
 
   function toggleLanguage() {
-    setLanguage(language === 'pt' ? 'en' : 'pt')
+    setLanguage(language === "pt" ? "en" : "pt")
   }
 
   const value: LanguageContextValue = {
@@ -43,11 +43,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLanguage,
   }
 
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+  return (
+    <LanguageContext.Provider value={value}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
 export function useLanguage(): LanguageContextValue {
   const ctx = useContext(LanguageContext)
-  if (!ctx) throw new Error('useLanguage must be used within LanguageProvider')
+  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider")
   return ctx
 }

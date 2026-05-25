@@ -1,4 +1,4 @@
-export type ExperienceLevel = 'intern' | 'junior' | 'mid' | 'senior'
+export type ExperienceLevel = "intern" | "junior" | "mid" | "senior"
 
 export interface Experience {
   readonly id: string

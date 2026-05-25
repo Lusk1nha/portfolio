@@ -1,4 +1,4 @@
-import type { Experience } from '../entities/Experience'
+import type { Experience } from "../entities/Experience"
 
 export interface IExperienceRepository {
   getAll(): Experience[]

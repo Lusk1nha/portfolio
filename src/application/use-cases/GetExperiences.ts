@@ -1,5 +1,5 @@
-import type { IExperienceRepository } from '@/domain/repositories/IExperienceRepository'
-import type { Experience } from '@/domain/entities/Experience'
+import type { IExperienceRepository } from "@/domain/repositories/IExperienceRepository"
+import type { Experience } from "@/domain/entities/Experience"
 
 export class GetExperiences {
   constructor(private readonly repository: IExperienceRepository) {}
