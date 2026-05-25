@@ -15,9 +15,16 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 let ratelimit: Ratelimit | null = null
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL ?? ""
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN ?? ""
+const redisConfigured =
+  redisUrl.startsWith("https://") &&
+  !redisUrl.includes("your-db") &&
+  redisToken.length > 10
+
+if (redisConfigured) {
   ratelimit = new Ratelimit({
-    redis: Redis.fromEnv(),
+    redis: new Redis({ url: redisUrl, token: redisToken }),
     limiter: Ratelimit.slidingWindow(5, "1 h"),
     prefix: "portfolio:contact",
     analytics: false,
@@ -151,19 +158,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" })
   }
 
-  // Rate limiting
+  // Rate limiting — fail open if Redis is unreachable
   if (ratelimit) {
-    const ip = getClientIp(req)
-    const { success, limit, remaining, reset } = await ratelimit.limit(ip)
+    try {
+      const ip = getClientIp(req)
+      const { success, limit, remaining, reset } = await ratelimit.limit(ip)
 
-    res.setHeader("X-RateLimit-Limit", limit)
-    res.setHeader("X-RateLimit-Remaining", remaining)
-    res.setHeader("X-RateLimit-Reset", reset)
+      res.setHeader("X-RateLimit-Limit", limit)
+      res.setHeader("X-RateLimit-Remaining", remaining)
+      res.setHeader("X-RateLimit-Reset", reset)
 
-    if (!success) {
-      const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000)
-      res.setHeader("Retry-After", retryAfterSeconds)
-      return res.status(429).json({ error: "rate_limited", retryAfter: retryAfterSeconds })
+      if (!success) {
+        const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000)
+        res.setHeader("Retry-After", retryAfterSeconds)
+        return res.status(429).json({ error: "rate_limited", retryAfter: retryAfterSeconds })
+      }
+    } catch (err) {
+      console.error("Rate limiter unavailable, proceeding without limiting:", err)
     }
   }
 
