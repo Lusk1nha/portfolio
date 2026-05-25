@@ -102,21 +102,23 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
     <motion.div
       animate={{ opacity: fading ? 0 : 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-9999 flex flex-col overflow-hidden bg-(--bg) px-8 py-10 font-mono text-[12px] sm:px-16 sm:py-14"
+      className="fixed inset-0 z-9999 flex flex-col overflow-hidden bg-(--bg) px-5 py-8 font-mono text-[11px] sm:px-16 sm:py-14 sm:text-[12px]"
       onClick={dismiss}
     >
-      <div className="absolute right-8 top-8 text-[11px]" style={{ color: 'var(--accent)' }}>
+      {/* Logo — inline flow, right-aligned, no overlap risk */}
+      <div className="mb-4 self-end" style={{ color: 'var(--accent)' }}>
         ◈ lucas@portfolio
       </div>
 
-      <div className="flex flex-col gap-0.5">
+      {/* Lines — whitespace-nowrap clips at edge like a real terminal */}
+      <div className="flex flex-1 flex-col gap-0.5 overflow-hidden">
         {LINES.slice(0, visibleCount).map((line, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1 }}
-            className="leading-5"
+            className="whitespace-nowrap leading-5"
           >
             {line.type === 'header' && (
               <span style={{ color: 'var(--accent)' }}>{line.text}</span>
@@ -147,7 +149,8 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
         )}
       </div>
 
-      <p className="absolute bottom-8 right-8 text-[10px] text-(--muted)">{skipLabel}</p>
+      {/* Skip — inline flow, right-aligned, never overlaps */}
+      <p className="mt-4 self-end text-[10px] text-(--muted)">{skipLabel}</p>
     </motion.div>
   )
 }
