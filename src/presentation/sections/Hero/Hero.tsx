@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
 import { Button } from "@/presentation/components/ui/Button/Button"
-import { TerminalWindow } from "@/presentation/components/ui/TerminalWindow/TerminalWindow"
+import { InteractiveTerminal } from "@/presentation/components/ui/InteractiveTerminal/InteractiveTerminal"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
 import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
 import avatarSrc from "@/assets/lucas-pedro.jpg"
@@ -47,21 +47,6 @@ const itemVariants = {
 export function Hero() {
   const { t, language } = useLanguage()
   const yearsLabel = getYearsLabel(language)
-
-  const terminalLines = [
-    { text: "whoami", type: "command" as const },
-    { text: "lucas-pedro-da-hora", type: "output" as const },
-    { text: "cat skills.txt", type: "command" as const },
-    { text: "React · Node.js · Rust · TypeScript", type: "output" as const },
-    {
-      text: "DDD · Clean Architecture · Microservices",
-      type: "output" as const,
-    },
-    { text: `experience --years`, type: "command" as const },
-    { text: yearsLabel + " de experiência", type: "output" as const },
-    { text: "status --check", type: "command" as const },
-    { text: t.hero.terminal.line9.replace("> ", ""), type: "output" as const },
-  ]
 
   return (
     <section className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28">
@@ -189,13 +174,13 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: terminal */}
+          {/* Right: interactive terminal */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <TerminalWindow title="lucas@portfolio:~" lines={terminalLines} />
+            <InteractiveTerminal />
           </motion.div>
         </div>
       </div>
