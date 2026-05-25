@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 import { createBrowserRouter } from "react-router-dom"
 import { AppLayout } from "@/presentation/components/layout/AppLayout/AppLayout"
 import { PageLoader } from "@/presentation/components/ui/PageLoader/PageLoader"
+import { ErrorPage } from "@/presentation/pages/ErrorPage/ErrorPage"
 
 const HomePage = lazy(() =>
   import("@/presentation/pages/HomePage/HomePage").then((m) => ({
@@ -51,13 +52,14 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <ErrorPage />,
     children: [
-      { index: true, element: page(HomePage) },
-      { path: "projects", element: page(ProjectsPage) },
-      { path: "experience", element: page(ExperiencePage) },
-      { path: "stack", element: page(StackPage) },
-      { path: "contact", element: page(ContactPage) },
-      { path: "cv", element: page(CvPage) },
+      { index: true, element: page(HomePage), errorElement: <ErrorPage /> },
+      { path: "projects", element: page(ProjectsPage), errorElement: <ErrorPage /> },
+      { path: "experience", element: page(ExperiencePage), errorElement: <ErrorPage /> },
+      { path: "stack", element: page(StackPage), errorElement: <ErrorPage /> },
+      { path: "contact", element: page(ContactPage), errorElement: <ErrorPage /> },
+      { path: "cv", element: page(CvPage), errorElement: <ErrorPage /> },
       { path: "*", element: page(NotFoundPage) },
     ],
   },

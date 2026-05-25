@@ -1,88 +1,30 @@
-import { Component, type ReactNode } from "react"
+import { useRouteError, isRouteErrorResponse, Link } from "react-router-dom"
 
-interface Props {
-  children: ReactNode
-}
+export function ErrorPage() {
+  const error = useRouteError()
 
-interface State {
-  error: Error | null
-}
+  const name = isRouteErrorResponse(error)
+    ? `HTTP ${error.status}`
+    : error instanceof Error
+      ? error.name
+      : "Error"
 
-export class ErrorBoundary extends Component<Props, State> {
-  state: State = { error: null }
+  const message = isRouteErrorResponse(error)
+    ? error.statusText
+    : error instanceof Error
+      ? error.message
+      : String(error ?? "An unexpected error occurred.")
 
-  // ─── React render errors (components throwing during render) ───────────────
-  static getDerivedStateFromError(error: Error): State {
-    return { error }
-  }
+  const stack =
+    !isRouteErrorResponse(error) && error instanceof Error
+      ? error.stack
+      : undefined
 
-  // ─── Runtime errors: event handlers, async callbacks, unhandled throws ─────
-  private handleWindowError = (event: ErrorEvent) => {
-    event.preventDefault()
-    const error = event.error instanceof Error ? event.error : new Error(event.message)
-    this.setState({ error })
-  }
-
-  private handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-    event.preventDefault()
-    const error =
-      event.reason instanceof Error
-        ? event.reason
-        : new Error(String(event.reason ?? "Unhandled promise rejection"))
-    this.setState({ error })
-  }
-
-  componentDidMount() {
-    window.addEventListener("error", this.handleWindowError)
-    window.addEventListener("unhandledrejection", this.handleUnhandledRejection)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("error", this.handleWindowError)
-    window.removeEventListener("unhandledrejection", this.handleUnhandledRejection)
-  }
-
-  reset = () => {
-    this.setState({ error: null })
-    window.location.href = "/"
-  }
-
-  retry = () => {
-    this.setState({ error: null })
-  }
-
-  render() {
-    const { error } = this.state
-
-    if (error) {
-      return (
-        <ErrorFallback
-          error={error}
-          onReset={this.reset}
-          onRetry={this.retry}
-        />
-      )
-    }
-
-    return this.props.children
-  }
-}
-
-function ErrorFallback({
-  error,
-  onReset,
-  onRetry,
-}: {
-  error: Error
-  onReset: () => void
-  onRetry: () => void
-}) {
   const timestamp = new Date().toISOString()
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-(--bg) px-4 py-16 font-mono">
       <div className="w-full max-w-2xl">
-        {/* Terminal window */}
         <div className="rounded-sm border border-(--border) bg-(--surface)">
           {/* Chrome */}
           <div className="flex items-center gap-1.5 border-b border-(--border) bg-(--surface-2) px-3 py-2">
@@ -113,11 +55,11 @@ function ErrorFallback({
             {/* Error block */}
             <div className="rounded-sm border border-(--destructive)/30 bg-(--destructive)/5 p-3">
               <p style={{ color: "var(--destructive)" }}>
-                {error.name}: {error.message}
+                {name}: {message}
               </p>
-              {error.stack && (
+              {stack && (
                 <div className="mt-2 space-y-0.5 text-(--muted) opacity-70">
-                  {error.stack
+                  {stack
                     .split("\n")
                     .slice(1, 5)
                     .map((line, i) => (
@@ -148,17 +90,17 @@ function ErrorFallback({
 
           {/* Actions */}
           <div className="flex flex-wrap gap-2 border-t border-(--border) px-5 py-4">
-            <button
-              onClick={onRetry}
+            <Link
+              to="/"
               className="rounded-sm border border-(--accent)/40 bg-(--accent)/10 px-4 py-1.5 text-[12px] text-(--accent) transition-colors hover:bg-(--accent)/20"
             >
-              ↺ retry
-            </button>
+              ← back to home
+            </Link>
             <button
-              onClick={onReset}
+              onClick={() => window.location.reload()}
               className="rounded-sm border border-(--border) px-4 py-1.5 text-[12px] text-(--muted) transition-colors hover:border-(--accent)/40 hover:text-(--accent)"
             >
-              ← back to home
+              ↺ retry
             </button>
           </div>
         </div>
