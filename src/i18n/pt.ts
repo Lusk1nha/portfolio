@@ -271,29 +271,29 @@ export const pt: Translations = {
     ],
   },
   cv: {
-    title: 'Currículo',
-    subtitle: '$ cat curriculo.md',
-    print: 'Imprimir / Salvar PDF',
+    title: "Currículo",
+    subtitle: "$ cat curriculo.md",
+    print: "Imprimir / Salvar PDF",
     summary: {
-      title: 'Resumo Profissional',
-      text: 'Desenvolvedor Full Stack com {years} de experiência na criação de sistemas web de alta performance. Especialista em React, Node.js, Nest.js e Rust, com sólida experiência em arquitetura de microsserviços, DDD, Clean Architecture e integração de IA. Atuei como Tech Lead, orientando times e definindo padrões de governança técnica.',
+      title: "Resumo Profissional",
+      text: "Desenvolvedor Full Stack com {years} de experiência na criação de sistemas web de alta performance. Especialista em React, Node.js, Nest.js e Rust, com sólida experiência em arquitetura de microsserviços, DDD, Clean Architecture e integração de IA. Atuei como Tech Lead, orientando times e definindo padrões de governança técnica.",
     },
     education: {
-      title: 'Formação',
-      degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
-      institution: 'FAM — Centro Universitário das Américas',
-      period: '2020 — 2022',
+      title: "Formação",
+      degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      institution: "FAM — Centro Universitário das Américas",
+      period: "2020 — 2022",
     },
     skills: {
-      title: 'Habilidades Técnicas',
+      title: "Habilidades Técnicas",
     },
     languages: {
-      title: 'Idiomas',
-      portuguese: 'Português — Nativo',
-      english: 'Inglês — Intermediário (leitura, escrita e conversação)',
+      title: "Idiomas",
+      portuguese: "Português — Nativo",
+      english: "Inglês — Intermediário (leitura, escrita e conversação)",
     },
     experience: {
-      title: 'Experiência Profissional',
+      title: "Experiência Profissional",
     },
   },
   footer: {

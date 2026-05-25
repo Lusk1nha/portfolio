@@ -7,6 +7,7 @@ import {
   BootSequence,
   shouldShowBoot,
 } from "@/presentation/components/ui/BootSequence/BootSequence"
+import { ErrorBoundary } from "@/presentation/components/ui/ErrorBoundary/ErrorBoundary"
 
 import { Analytics } from "@vercel/analytics/react"
 
@@ -15,12 +16,14 @@ export default function App() {
 
   return (
     <>
-      <ThemeProvider>
-        <LanguageProvider>
-          {showBoot && <BootSequence onDone={() => setShowBoot(false)} />}
-          <RouterProvider router={router} />
-        </LanguageProvider>
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <LanguageProvider>
+            {showBoot && <BootSequence onDone={() => setShowBoot(false)} />}
+            <RouterProvider router={router} />
+          </LanguageProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
       <Analytics />
     </>
   )

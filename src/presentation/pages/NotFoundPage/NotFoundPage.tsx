@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
-import { Button } from '@/presentation/components/ui/Button/Button'
+import { motion } from "framer-motion"
+import { Link, useLocation } from "react-router-dom"
+import { Button } from "@/presentation/components/ui/Button/Button"
 
 export function NotFoundPage() {
   const { pathname } = useLocation()
@@ -25,24 +25,24 @@ export function NotFoundPage() {
           {/* Terminal output */}
           <div className="space-y-1.5 text-[12px]">
             <p className="text-(--muted)">
-              <span style={{ color: 'var(--accent)' }}>$</span> cd {pathname}
+              <span style={{ color: "var(--accent)" }}>$</span> cd {pathname}
             </p>
-            <p style={{ color: 'var(--destructive)' }}>
+            <p style={{ color: "var(--destructive)" }}>
               bash: cd: {pathname}: No such file or directory
             </p>
             <p className="text-(--muted)">
-              <span style={{ color: 'var(--accent)' }}>$</span> ls ~/pages
+              <span style={{ color: "var(--accent)" }}>$</span> ls ~/pages
             </p>
-            <p style={{ color: 'var(--accent)' }}>
+            <p style={{ color: "var(--accent)" }}>
               home/&nbsp;&nbsp;projects/&nbsp;&nbsp;experience/&nbsp;&nbsp;stack/&nbsp;&nbsp;contact/&nbsp;&nbsp;cv/
             </p>
             <p className="flex items-center gap-1.5 text-(--muted)">
-              <span style={{ color: 'var(--accent)' }}>$</span>
+              <span style={{ color: "var(--accent)" }}>$</span>
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
                 className="inline-block h-3.5 w-1.5 rounded-sm"
-                style={{ background: 'var(--accent)' }}
+                style={{ background: "var(--accent)" }}
               />
             </p>
           </div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 
 export function PageLoader() {
   return (
@@ -18,13 +18,13 @@ export function PageLoader() {
           </div>
 
           <div className="flex items-center gap-2 text-(--muted)">
-            <span style={{ color: 'var(--accent)' }}>$</span>
+            <span style={{ color: "var(--accent)" }}>$</span>
             <span>loading</span>
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 0.7, repeat: Infinity }}
               className="inline-block h-3.5 w-1.5 rounded-sm"
-              style={{ background: 'var(--accent)' }}
+              style={{ background: "var(--accent)" }}
             />
           </div>
         </div>

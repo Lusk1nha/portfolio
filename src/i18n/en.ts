@@ -123,29 +123,29 @@ export const en: Translations = {
     ],
   },
   cv: {
-    title: 'Resume',
-    subtitle: '$ cat resume.md',
-    print: 'Print / Save as PDF',
+    title: "Resume",
+    subtitle: "$ cat resume.md",
+    print: "Print / Save as PDF",
     summary: {
-      title: 'Professional Summary',
-      text: 'Full Stack Developer with {years} of experience building high-performance web systems. Specialist in React, Node.js, Nest.js, and Rust, with solid expertise in microservices architecture, DDD, Clean Architecture, and AI integration. Worked as Tech Lead, guiding teams and defining technical governance standards.',
+      title: "Professional Summary",
+      text: "Full Stack Developer with {years} of experience building high-performance web systems. Specialist in React, Node.js, Nest.js, and Rust, with solid expertise in microservices architecture, DDD, Clean Architecture, and AI integration. Worked as Tech Lead, guiding teams and defining technical governance standards.",
     },
     education: {
-      title: 'Education',
-      degree: 'Associate Degree in Systems Analysis and Development',
-      institution: 'FAM — Centro Universitário das Américas',
-      period: '2020 — 2022',
+      title: "Education",
+      degree: "Associate Degree in Systems Analysis and Development",
+      institution: "FAM — Centro Universitário das Américas",
+      period: "2020 — 2022",
     },
     skills: {
-      title: 'Technical Skills',
+      title: "Technical Skills",
     },
     languages: {
-      title: 'Languages',
-      portuguese: 'Portuguese — Native',
-      english: 'English — Intermediate (reading, writing and conversation)',
+      title: "Languages",
+      portuguese: "Portuguese — Native",
+      english: "English — Intermediate (reading, writing and conversation)",
     },
     experience: {
-      title: 'Professional Experience',
+      title: "Professional Experience",
     },
   },
   footer: {

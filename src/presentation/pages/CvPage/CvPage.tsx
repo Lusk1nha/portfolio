@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { motion } from 'framer-motion'
+import { useRef } from "react"
+import { motion } from "framer-motion"
 import {
   PrinterIcon,
   EnvelopeSimpleIcon,
@@ -11,24 +11,39 @@ import {
   WrenchIcon,
   TranslateIcon,
   UserIcon,
-} from '@phosphor-icons/react'
-import { useLanguage } from '@/presentation/contexts/LanguageContext'
-import { getYearsLabel } from '@/domain/value-objects/YearsOfExperience'
-import { EXPERIENCES } from '@/infrastructure/data/experiences.data'
-import { STACK_ITEMS } from '@/infrastructure/data/stack.data'
-import type { StackGroup } from '@/domain/entities/StackItem'
+} from "@phosphor-icons/react"
+import { useLanguage } from "@/presentation/contexts/LanguageContext"
+import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
+import { EXPERIENCES } from "@/infrastructure/data/experiences.data"
+import { STACK_ITEMS } from "@/infrastructure/data/stack.data"
+import type { StackGroup } from "@/domain/entities/StackItem"
 
-const STACK_GROUP_ORDER: StackGroup[] = ['frontend', 'backend', 'cloud', 'ai', 'architecture', 'tools']
+const STACK_GROUP_ORDER: StackGroup[] = [
+  "frontend",
+  "backend",
+  "cloud",
+  "ai",
+  "architecture",
+  "tools",
+]
 
-function formatPeriod(startDate: string, endDate: string | null, presentLabel: string): string {
+function formatPeriod(
+  startDate: string,
+  endDate: string | null,
+  presentLabel: string
+): string {
   const fmt = (d: string) => {
-    const [year, month] = d.split('-')
+    const [year, month] = d.split("-")
     return `${month}/${year}`
   }
   return `${fmt(startDate)} — ${endDate ? fmt(endDate) : presentLabel}`
 }
 
-function CvSection({ icon: Icon, title, children }: {
+function CvSection({
+  icon: Icon,
+  title,
+  children,
+}: {
   icon: React.ElementType
   title: string
   children: React.ReactNode
@@ -36,8 +51,10 @@ function CvSection({ icon: Icon, title, children }: {
   return (
     <div className="mb-8 print:mb-6">
       <div className="mb-4 flex items-center gap-2 border-b border-(--border) pb-2 print:mb-3">
-        <Icon size={14} style={{ color: 'var(--accent)' }} />
-        <h2 className="text-[11px] font-semibold uppercase tracking-widest text-(--muted)">{title}</h2>
+        <Icon size={14} style={{ color: "var(--accent)" }} />
+        <h2 className="text-[11px] font-semibold tracking-widest text-(--muted) uppercase">
+          {title}
+        </h2>
       </div>
       {children}
     </div>
@@ -49,11 +66,16 @@ export function CvPage() {
   const yearsLabel = getYearsLabel(language)
   const printRef = useRef<HTMLDivElement>(null)
 
-  const groupedStack = STACK_GROUP_ORDER.reduce<Record<string, string[]>>((acc, group) => {
-    const items = STACK_ITEMS.filter((s) => s.group === group).map((s) => s.name)
-    if (items.length) acc[group] = items
-    return acc
-  }, {})
+  const groupedStack = STACK_GROUP_ORDER.reduce<Record<string, string[]>>(
+    (acc, group) => {
+      const items = STACK_ITEMS.filter((s) => s.group === group).map(
+        (s) => s.name
+      )
+      if (items.length) acc[group] = items
+      return acc
+    },
+    {}
+  )
 
   const groupLabels: Record<StackGroup, string> = {
     frontend: t.stack.groups.frontend,
@@ -90,10 +112,15 @@ export function CvPage() {
         <div className="mb-8 border-b border-(--border) pb-6 print:mb-6">
           <div
             className="mb-4 h-0.5 w-12"
-            style={{ background: 'var(--accent)' }}
+            style={{ background: "var(--accent)" }}
           />
-          <h1 className="text-2xl font-bold text-(--fg)">Lucas Pedro da Hora</h1>
-          <p className="mt-1 text-base font-medium" style={{ color: 'var(--accent)' }}>
+          <h1 className="text-2xl font-bold text-(--fg)">
+            Lucas Pedro da Hora
+          </h1>
+          <p
+            className="mt-1 text-base font-medium"
+            style={{ color: "var(--accent)" }}
+          >
             Full Stack Developer
           </p>
 
@@ -133,7 +160,7 @@ export function CvPage() {
         {/* Summary */}
         <CvSection icon={UserIcon} title={t.cv.summary.title}>
           <p className="text-sm leading-relaxed text-(--muted)">
-            {t.cv.summary.text.replace('{years}', yearsLabel)}
+            {t.cv.summary.text.replace("{years}", yearsLabel)}
           </p>
         </CvSection>
 
@@ -144,8 +171,13 @@ export function CvPage() {
               <div key={exp.id} className="group">
                 <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-0.5">
                   <div>
-                    <h3 className="text-sm font-semibold text-(--fg)">{exp.role[language]}</h3>
-                    <p className="text-[12px] font-medium" style={{ color: 'var(--accent)' }}>
+                    <h3 className="text-sm font-semibold text-(--fg)">
+                      {exp.role[language]}
+                    </h3>
+                    <p
+                      className="text-[12px] font-medium"
+                      style={{ color: "var(--accent)" }}
+                    >
                       {exp.company}
                       <span className="ml-2 font-normal text-(--muted)">
                         · {exp.location[language]} · {exp.modality[language]}
@@ -153,7 +185,11 @@ export function CvPage() {
                     </p>
                   </div>
                   <span className="shrink-0 text-[11px] text-(--muted)">
-                    {formatPeriod(exp.startDate, exp.endDate, t.experience.present)}
+                    {formatPeriod(
+                      exp.startDate,
+                      exp.endDate,
+                      t.experience.present
+                    )}
                   </span>
                 </div>
 
@@ -163,8 +199,16 @@ export function CvPage() {
 
                 <ul className="mt-2 space-y-1">
                   {exp.highlights[language].map((h, i) => (
-                    <li key={i} className="flex gap-2 text-[11px] text-(--muted)">
-                      <span style={{ color: 'var(--accent)' }} className="shrink-0 mt-0.5">▸</span>
+                    <li
+                      key={i}
+                      className="flex gap-2 text-[11px] text-(--muted)"
+                    >
+                      <span
+                        style={{ color: "var(--accent)" }}
+                        className="mt-0.5 shrink-0"
+                      >
+                        ▸
+                      </span>
                       {h}
                     </li>
                   ))}
@@ -189,10 +233,16 @@ export function CvPage() {
         <CvSection icon={GraduationCapIcon} title={t.cv.education.title}>
           <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-0.5">
             <div>
-              <h3 className="text-sm font-semibold text-(--fg)">{t.cv.education.degree}</h3>
-              <p className="text-[12px] text-(--muted)">{t.cv.education.institution}</p>
+              <h3 className="text-sm font-semibold text-(--fg)">
+                {t.cv.education.degree}
+              </h3>
+              <p className="text-[12px] text-(--muted)">
+                {t.cv.education.institution}
+              </p>
             </div>
-            <span className="shrink-0 text-[11px] text-(--muted)">{t.cv.education.period}</span>
+            <span className="shrink-0 text-[11px] text-(--muted)">
+              {t.cv.education.period}
+            </span>
           </div>
         </CvSection>
 
@@ -224,15 +274,15 @@ export function CvPage() {
           <div className="space-y-1.5">
             <p className="text-[12px] text-(--muted)">
               <span className="font-medium text-(--fg)">
-                {t.cv.languages.portuguese.split(' — ')[0]}
-              </span>
-              {' '}— {t.cv.languages.portuguese.split(' — ')[1]}
+                {t.cv.languages.portuguese.split(" — ")[0]}
+              </span>{" "}
+              — {t.cv.languages.portuguese.split(" — ")[1]}
             </p>
             <p className="text-[12px] text-(--muted)">
               <span className="font-medium text-(--fg)">
-                {t.cv.languages.english.split(' — ')[0]}
-              </span>
-              {' '}— {t.cv.languages.english.split(' — ')[1]}
+                {t.cv.languages.english.split(" — ")[0]}
+              </span>{" "}
+              — {t.cv.languages.english.split(" — ")[1]}
             </p>
           </div>
         </CvSection>
