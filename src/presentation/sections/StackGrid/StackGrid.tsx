@@ -29,11 +29,11 @@ export function StackGrid({ compact = false }: { compact?: boolean }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="rounded-sm border border-[var(--border)] bg-[var(--surface)] overflow-hidden"
+              className="rounded-sm border border-(--border) bg-(--surface) overflow-hidden"
             >
               <div className="h-0.5" style={{ background: 'var(--accent)' }} />
               <div className="p-4">
-                <h3 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+                <h3 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-(--muted)">
                   {t.stack.groups[group as StackGroup]}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">

@@ -47,15 +47,15 @@ export function ProjectsPage() {
             <motion.div key={project.id} variants={itemVariants}>
               <Card hover className="flex h-full flex-col p-5">
                 <div className="mb-3 flex items-start justify-between gap-2">
-                  <h3 className="text-[13px] font-semibold leading-snug text-[var(--fg)]">
+                  <h3 className="text-[13px] font-semibold leading-snug text-(--fg)">
                     {project.name}
                   </h3>
-                  <Badge variant="muted" className="flex-shrink-0 text-[10px]">
+                  <Badge variant="muted" className="shrink-0 text-[10px]">
                     {t.projects.status[project.status]}
                   </Badge>
                 </div>
 
-                <p className="mb-4 flex-1 text-[11px] leading-relaxed text-[var(--muted)]">
+                <p className="mb-4 flex-1 text-[11px] leading-relaxed text-(--muted)">
                   {project.description[language]}
                 </p>
 
@@ -67,9 +67,9 @@ export function ProjectsPage() {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between border-t border-[var(--border)] pt-3">
+                <div className="flex items-center justify-between border-t border-(--border) pt-3">
                   {project.stars !== undefined ? (
-                    <div className="flex items-center gap-3 text-[10px] text-[var(--muted)]">
+                    <div className="flex items-center gap-3 text-[10px] text-(--muted)">
                       <span className="flex items-center gap-1">
                         <StarIcon size={10} />
                         {project.stars}
@@ -80,7 +80,7 @@ export function ProjectsPage() {
                       </span>
                     </div>
                   ) : (
-                    <span className="text-[10px] text-[var(--muted)]">
+                    <span className="text-[10px] text-(--muted)">
                       {t.projects.source[project.source]}
                     </span>
                   )}
@@ -91,7 +91,7 @@ export function ProjectsPage() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-6 items-center justify-center rounded-sm border border-[var(--border)] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                        className="flex size-6 items-center justify-center rounded-sm border border-(--border) text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--accent)"
                       >
                         <GithubLogoIcon size={11} />
                       </a>
@@ -101,7 +101,7 @@ export function ProjectsPage() {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-6 items-center justify-center rounded-sm border border-[var(--border)] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                        className="flex size-6 items-center justify-center rounded-sm border border-(--border) text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--accent)"
                       >
                         <ArrowSquareOutIcon size={11} />
                       </a>

@@ -16,9 +16,9 @@ export function SectionTitle({ title, subtitle, className = '' }: SectionTitlePr
       className={`mb-10 ${className}`}
     >
       {subtitle && (
-        <p className="mb-1 text-[11px] text-[var(--muted)]">{subtitle}</p>
+        <p className="mb-1 text-[11px] text-(--muted)">{subtitle}</p>
       )}
-      <h2 className="text-2xl font-bold text-[var(--fg)]">
+      <h2 className="text-2xl font-bold text-(--fg)">
         <span style={{ color: 'var(--accent)' }}>#</span> {title}
       </h2>
       <div

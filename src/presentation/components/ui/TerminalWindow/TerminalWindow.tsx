@@ -43,14 +43,14 @@ function LineContent({ line }: { line: TerminalLine }) {
 export function TerminalWindow({ title = 'terminal', lines, className = '' }: TerminalWindowProps) {
   return (
     <div
-      className={`rounded-sm border border-[var(--border)] bg-[var(--surface)] overflow-hidden font-mono text-sm ${className}`}
+      className={`rounded-sm border border-(--border) bg-(--surface) overflow-hidden font-mono text-sm ${className}`}
     >
       {/* Window chrome */}
-      <div className="flex items-center gap-2 border-b border-[var(--border)] px-4 py-2.5">
+      <div className="flex items-center gap-2 border-b border-(--border) px-4 py-2.5">
         <span className="size-2.5 rounded-full bg-[#ff5f57]" />
         <span className="size-2.5 rounded-full bg-[#febc2e]" />
         <span className="size-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-3 text-[11px] text-[var(--muted)]">{title}</span>
+        <span className="ml-3 text-[11px] text-(--muted)">{title}</span>
       </div>
 
       {/* Terminal content */}

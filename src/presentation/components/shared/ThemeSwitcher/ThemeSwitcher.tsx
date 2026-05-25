@@ -11,8 +11,8 @@ function ThemeSwatch({ theme, active, onClick }: { theme: Theme; active: boolean
       title={theme.label}
       className={`group relative flex flex-col gap-1.5 rounded-sm border p-2.5 text-left transition-all ${
         active
-          ? 'border-[var(--accent)] bg-[var(--accent)]/8'
-          : 'border-[var(--border)] hover:border-[var(--accent)]/50 hover:bg-[var(--surface-hover)]'
+          ? 'border-(--accent) bg-(--accent)/8'
+          : 'border-(--border) hover:border-(--accent)/50 hover:bg-(--surface-hover)'
       }`}
     >
       {/* Color preview */}
@@ -27,7 +27,7 @@ function ThemeSwatch({ theme, active, onClick }: { theme: Theme; active: boolean
       {/* Label */}
       <span
         className={`truncate text-[10px] font-medium leading-none ${
-          active ? 'text-[var(--accent)]' : 'text-[var(--muted)] group-hover:text-[var(--fg)]'
+          active ? 'text-(--accent)' : 'text-(--muted) group-hover:text-(--fg)'
         }`}
       >
         {theme.label}
@@ -68,16 +68,16 @@ export function ThemeSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex h-8 items-center gap-1.5 rounded-sm border border-[var(--border)] bg-[var(--surface)] px-2.5 text-[11px] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--fg)]"
+        className="flex h-8 items-center gap-1.5 rounded-sm border border-(--border) bg-(--surface) px-2.5 text-[11px] text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--fg)"
         aria-label="Switch theme"
       >
         {/* Current accent dot */}
         <span
-          className="size-2 rounded-full flex-shrink-0"
+          className="size-2 rounded-full shrink-0"
           style={{ background: themeData.accent }}
         />
         <span className="hidden sm:inline max-w-[72px] truncate">{theme}</span>
-        <ModeIcon size={11} className="ml-0.5 flex-shrink-0" />
+        <ModeIcon size={11} className="ml-0.5 shrink-0" />
       </button>
 
       <AnimatePresence>
@@ -87,11 +87,11 @@ export function ThemeSwitcher() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-10 z-50 w-72 rounded-sm border border-[var(--border)] bg-[var(--surface-2)] p-3 shadow-2xl"
+            className="absolute right-0 top-10 z-50 w-72 rounded-sm border border-(--border) bg-(--surface-2) p-3 shadow-2xl"
           >
             {/* Dark group */}
             <div className="mb-3">
-              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-(--muted)">
                 <MoonIcon size={10} />
                 Dark
               </p>
@@ -108,8 +108,8 @@ export function ThemeSwitcher() {
             </div>
 
             {/* Light group */}
-            <div className="border-t border-[var(--border)] pt-3">
-              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+            <div className="border-t border-(--border) pt-3">
+              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-(--muted)">
                 <SunIcon size={10} />
                 Light
               </p>

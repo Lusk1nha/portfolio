@@ -8,16 +8,16 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <div className="border-t border-[var(--border)]">
+      <div className="border-t border-(--border)">
         <FeaturedProjects />
       </div>
-      <div className="border-t border-[var(--border)]">
+      <div className="border-t border-(--border)">
         <ExperienceTimeline compact />
       </div>
-      <div className="border-t border-[var(--border)]">
+      <div className="border-t border-(--border)">
         <StackGrid compact />
       </div>
-      <div className="border-t border-[var(--border)]">
+      <div className="border-t border-(--border)">
         <ContactSection />
       </div>
     </>

@@ -49,7 +49,7 @@ export function FeaturedProjects() {
           />
           <Link
             to="/projects"
-            className="mb-10 hidden items-center gap-1 text-[11px] text-[var(--muted)] transition-colors hover:text-[var(--accent)] sm:flex"
+            className="mb-10 hidden items-center gap-1 text-[11px] text-(--muted) transition-colors hover:text-(--accent) sm:flex"
           >
             {t.projects.view_all}
             <ArrowRightIcon size={11} />
@@ -67,15 +67,15 @@ export function FeaturedProjects() {
             <motion.div key={project.id} variants={itemVariants}>
               <Card hover className="flex h-full flex-col p-5">
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="text-[13px] font-semibold text-[var(--fg)] leading-snug">{project.name}</h3>
-                  <div className="flex items-center gap-1 flex-shrink-0">
+                  <h3 className="text-[13px] font-semibold text-(--fg) leading-snug">{project.name}</h3>
+                  <div className="flex items-center gap-1 shrink-0">
                     <Badge variant="muted" className="text-[10px]">
                       {t.projects.status[project.status]}
                     </Badge>
                   </div>
                 </div>
 
-                <p className="mb-4 flex-1 text-[11px] leading-relaxed text-[var(--muted)]">
+                <p className="mb-4 flex-1 text-[11px] leading-relaxed text-(--muted)">
                   {project.description[language]}
                 </p>
 
@@ -87,9 +87,9 @@ export function FeaturedProjects() {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between border-t border-[var(--border)] pt-3">
+                <div className="flex items-center justify-between border-t border-(--border) pt-3">
                   {(project.stars !== undefined || project.forks !== undefined) ? (
-                    <div className="flex items-center gap-3 text-[10px] text-[var(--muted)]">
+                    <div className="flex items-center gap-3 text-[10px] text-(--muted)">
                       {project.stars !== undefined && (
                         <span className="flex items-center gap-1">
                           <StarIcon size={10} />
@@ -104,7 +104,7 @@ export function FeaturedProjects() {
                       )}
                     </div>
                   ) : (
-                    <span className="text-[10px] text-[var(--muted)]">
+                    <span className="text-[10px] text-(--muted)">
                       {t.projects.source[project.source]}
                     </span>
                   )}
@@ -115,7 +115,7 @@ export function FeaturedProjects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-6 items-center justify-center rounded-sm border border-[var(--border)] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                        className="flex size-6 items-center justify-center rounded-sm border border-(--border) text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--accent)"
                         aria-label={t.projects.view_github}
                       >
                         <GithubLogoIcon size={11} />
@@ -126,7 +126,7 @@ export function FeaturedProjects() {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-6 items-center justify-center rounded-sm border border-[var(--border)] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                        className="flex size-6 items-center justify-center rounded-sm border border-(--border) text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--accent)"
                         aria-label={t.projects.view_demo}
                       >
                         <ArrowSquareOutIcon size={11} />

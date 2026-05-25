@@ -43,7 +43,7 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
               <div className="flex flex-col items-center" style={{ width: DOT_SIZE }}>
                 {/* Dot */}
                 <div
-                  className="size-3 flex-shrink-0 rounded-full border-2 border-[var(--bg)] mt-5 z-10"
+                  className="size-3 shrink-0 rounded-full border-2 border-(--bg) mt-5 z-10"
                   style={{ background: 'var(--accent)', minHeight: DOT_SIZE }}
                 />
                 {/* Line below the dot */}
@@ -59,13 +59,13 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
 
               {/* ── Right column: card ────────────────────────────── */}
               <div className="flex-1 pb-2">
-                <div className="rounded-sm border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                <div className="rounded-sm border border-(--border) bg-(--surface) overflow-hidden">
                   <div className="h-0.5" style={{ background: 'var(--accent)' }} />
                   <div className="p-5">
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div>
-                        <h3 className="text-[13px] font-semibold text-[var(--fg)]">
+                        <h3 className="text-[13px] font-semibold text-(--fg)">
                           {exp.role[language]}
                         </h3>
                         <p className="text-[12px] font-medium" style={{ color: 'var(--accent)' }}>
@@ -78,7 +78,7 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                     </div>
 
                     {/* Meta */}
-                    <div className="flex flex-wrap gap-3 mb-4 text-[11px] text-[var(--muted)]">
+                    <div className="flex flex-wrap gap-3 mb-4 text-[11px] text-(--muted)">
                       <span className="flex items-center gap-1">
                         <CalendarIcon size={10} />
                         {formatDate(exp.startDate, language)} — {exp.endDate ? formatDate(exp.endDate, language) : t.experience.present}
@@ -92,8 +92,8 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                     {/* Highlights */}
                     <ul className="mb-4 space-y-1.5">
                       {exp.highlights[language].map((h, j) => (
-                        <li key={j} className="flex items-start gap-2 text-[11px] text-[var(--muted)]">
-                          <span className="mt-0.5 flex-shrink-0 text-[9px]" style={{ color: 'var(--accent)' }}>
+                        <li key={j} className="flex items-start gap-2 text-[11px] text-(--muted)">
+                          <span className="mt-0.5 shrink-0 text-[9px]" style={{ color: 'var(--accent)' }}>
                             ▸
                           </span>
                           {h}

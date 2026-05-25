@@ -7,7 +7,7 @@ interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onD
 }
 
 export function Card({ accentTop = false, hover = false, children, className = '', ...props }: CardProps) {
-  const base = 'relative rounded-sm border border-[var(--border)] bg-[var(--surface)] overflow-hidden'
+  const base = 'relative rounded-sm border border-(--border) bg-(--surface) overflow-hidden'
 
   if (hover) {
     return (

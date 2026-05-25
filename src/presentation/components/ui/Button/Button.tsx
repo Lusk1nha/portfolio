@@ -11,13 +11,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   default:
-    'bg-[var(--accent)] text-[var(--accent-fg)] border border-[var(--accent)] hover:opacity-85',
+    'bg-(--accent) text-(--accent-fg) border border-(--accent) hover:opacity-85',
   outline:
-    'bg-transparent text-[var(--accent)] border border-[var(--accent)] hover:bg-[var(--accent)] hover:text-[var(--accent-fg)]',
+    'bg-transparent text-(--accent) border border-(--accent) hover:bg-(--accent) hover:text-(--accent-fg)',
   ghost:
-    'bg-transparent text-[var(--fg)] border border-transparent hover:bg-[var(--surface)] hover:border-[var(--border)]',
+    'bg-transparent text-(--fg) border border-transparent hover:bg-(--surface) hover:border-(--border)',
   secondary:
-    'bg-[var(--surface)] text-[var(--fg)] border border-[var(--border)] hover:bg-[var(--surface-2)]',
+    'bg-(--surface) text-(--fg) border border-(--border) hover:bg-(--surface-2)',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -38,7 +38,7 @@ export function Button({
       className={`
         inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm font-medium
         transition-all duration-200 active:scale-[0.98]
-        focus-visible:border-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]
+        focus-visible:border-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring)
         disabled:pointer-events-none disabled:opacity-40
         ${variantClasses[variant]} ${sizeClasses[size]} ${className}
       `}

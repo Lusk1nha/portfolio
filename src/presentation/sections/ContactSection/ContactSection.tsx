@@ -45,7 +45,7 @@ export function ContactSection() {
           className="space-y-8"
         >
           <Card accentTop className="p-6">
-            <p className="mb-6 text-sm leading-relaxed text-[var(--muted)]">
+            <p className="mb-6 text-sm leading-relaxed text-(--muted)">
               {t.contact.description}
             </p>
 
@@ -56,16 +56,16 @@ export function ContactSection() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-sm border border-[var(--border)] bg-[var(--surface-2)] px-3 py-3 transition-all hover:border-[var(--accent)]/50 hover:bg-[var(--surface-hover)]"
+                  className="group flex items-center gap-3 rounded-sm border border-(--border) bg-(--surface-2) px-3 py-3 transition-all hover:border-(--accent)/50 hover:bg-(--surface-hover)"
                 >
                   <Icon
                     size={16}
-                    className="flex-shrink-0 text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]"
+                    className="shrink-0 text-(--muted) transition-colors group-hover:text-(--accent)"
                     style={{ color: undefined }}
                   />
                   <div className="min-w-0">
-                    <p className="text-[10px] text-[var(--muted)]">{t.contact[labelKey]}</p>
-                    <p className="truncate text-[11px] font-medium text-[var(--fg)]">{handle}</p>
+                    <p className="text-[10px] text-(--muted)">{t.contact[labelKey]}</p>
+                    <p className="truncate text-[11px] font-medium text-(--fg)">{handle}</p>
                   </div>
                 </a>
               ))}
@@ -81,15 +81,15 @@ export function ContactSection() {
             </div>
           </Card>
 
-          <div className="rounded-sm border border-[var(--border)] bg-[var(--surface)] p-5">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+          <div className="rounded-sm border border-(--border) bg-(--surface) p-5">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-(--muted)">
               {t.contact.open_to}
             </p>
             <div className="flex flex-wrap gap-2">
               {t.contact.opportunities.map((op) => (
                 <span
                   key={op}
-                  className="rounded-sm border border-[var(--accent)]/30 bg-[var(--accent)]/8 px-2.5 py-1 text-[11px] text-[var(--accent)]"
+                  className="rounded-sm border border-(--accent)/30 bg-(--accent)/8 px-2.5 py-1 text-[11px] text-(--accent)"
                 >
                   {op}
                 </span>

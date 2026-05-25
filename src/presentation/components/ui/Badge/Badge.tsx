@@ -6,11 +6,11 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantClasses: Record<NonNullable<BadgeProps['variant']>, string> = {
-  default: 'border-[var(--border)] bg-[var(--surface)] text-[var(--fg)]',
-  accent: 'border-[var(--accent)]/30 bg-[var(--accent)]/8 text-[var(--accent)]',
-  success: 'border-[var(--success)]/30 bg-[var(--success)]/8 text-[var(--success)]',
-  warning: 'border-[var(--warning)]/30 bg-[var(--warning)]/8 text-[var(--warning)]',
-  muted: 'border-[var(--border)] bg-transparent text-[var(--muted)]',
+  default: 'border-(--border) bg-(--surface) text-(--fg)',
+  accent: 'border-(--accent)/30 bg-(--accent)/8 text-(--accent)',
+  success: 'border-(--success)/30 bg-(--success)/8 text-(--success)',
+  warning: 'border-(--warning)/30 bg-(--warning)/8 text-(--warning)',
+  muted: 'border-(--border) bg-transparent text-(--muted)',
 }
 
 export function Badge({ variant = 'default', pulse, children, className = '', ...props }: BadgeProps) {

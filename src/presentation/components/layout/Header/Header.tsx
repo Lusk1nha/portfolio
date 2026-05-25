@@ -28,7 +28,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-(--border) bg-(--bg)/90 backdrop-blur-md">
       {/* Accent top strip */}
       <div className="h-0.5 w-full" style={{ background: 'var(--accent)' }} />
 
@@ -36,8 +36,8 @@ export function Header() {
         {/* Logo */}
         <NavLink to="/" className="flex items-center gap-1.5 text-[13px] font-bold">
           <span style={{ color: 'var(--accent)' }}>◈</span>
-          <span className="text-[var(--fg)]">lucas</span>
-          <span className="text-[var(--muted)]">/</span>
+          <span className="text-(--fg)">lucas</span>
+          <span className="text-(--muted)">/</span>
           <span style={{ color: 'var(--accent)' }}>portfolio</span>
         </NavLink>
 
@@ -51,8 +51,8 @@ export function Header() {
                 to={path}
                 className={`rounded-sm px-3 py-1.5 text-[11px] transition-colors ${
                   isActive
-                    ? 'bg-[var(--accent)]/10 text-[var(--accent)]'
-                    : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--fg)]'
+                    ? 'bg-(--accent)/10 text-(--accent)'
+                    : 'text-(--muted) hover:bg-(--surface) hover:text-(--fg)'
                 }`}
               >
                 {navLabels[key]}
@@ -68,7 +68,7 @@ export function Header() {
 
           {/* Mobile menu toggle */}
           <button
-            className="flex size-8 items-center justify-center rounded-sm border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] md:hidden"
+            className="flex size-8 items-center justify-center rounded-sm border border-(--border) bg-(--surface) text-(--muted) md:hidden"
             onClick={() => setMobileOpen((o) => !o)}
           >
             {mobileOpen ? <XIcon size={14} /> : <ListIcon size={14} />}
@@ -84,7 +84,7 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-[var(--border)] md:hidden"
+            className="overflow-hidden border-t border-(--border) md:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-3">
               {NAV_ROUTES.map(({ key, path }) => (
@@ -95,8 +95,8 @@ export function Header() {
                   className={({ isActive }) =>
                     `rounded-sm px-3 py-2 text-[12px] ${
                       isActive
-                        ? 'bg-[var(--accent)]/10 text-[var(--accent)]'
-                        : 'text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--fg)]'
+                        ? 'bg-(--accent)/10 text-(--accent)'
+                        : 'text-(--muted) hover:bg-(--surface) hover:text-(--fg)'
                     }`
                   }
                 >

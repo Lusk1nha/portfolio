@@ -83,10 +83,10 @@ export function Hero() {
                 <img
                   src={avatarSrc}
                   alt="Lucas Pedro da Hora"
-                  className="relative size-20 rounded-full object-cover ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--bg)]"
+                  className="relative size-20 rounded-full object-cover ring-2 ring-(--accent) ring-offset-2 ring-offset-(--bg)"
                 />
                 <span
-                  className="absolute bottom-0.5 right-0.5 size-3.5 rounded-full border-2 border-[var(--bg)]"
+                  className="absolute bottom-0.5 right-0.5 size-3.5 rounded-full border-2 border-(--bg)"
                   style={{ background: 'var(--success)' }}
                   title="Online"
                 />
@@ -100,24 +100,24 @@ export function Hero() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-1">
-              <p className="text-sm text-[var(--muted)]">{t.hero.greeting}</p>
-              <h1 className="text-3xl font-bold leading-tight text-[var(--fg)] sm:text-4xl">
+              <p className="text-sm text-(--muted)">{t.hero.greeting}</p>
+              <h1 className="text-3xl font-bold leading-tight text-(--fg) sm:text-4xl">
                 {t.hero.name}
               </h1>
               <p className="text-lg font-semibold" style={{ color: 'var(--accent)' }}>
                 {t.hero.title}
               </p>
-              <p className="text-sm text-[var(--muted)]">{t.hero.subtitle}</p>
+              <p className="text-sm text-(--muted)">{t.hero.subtitle}</p>
             </motion.div>
 
             <motion.p
               variants={itemVariants}
-              className="max-w-md text-sm leading-relaxed text-[var(--muted)]"
+              className="max-w-md text-sm leading-relaxed text-(--muted)"
             >
               {t.hero.description.replace('{years}', yearsLabel)}
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-1.5 text-[11px] text-[var(--muted)]">
+            <motion.div variants={itemVariants} className="flex items-center gap-1.5 text-[11px] text-(--muted)">
               <MapPinIcon size={12} />
               {t.hero.location}
             </motion.div>
@@ -143,7 +143,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex size-8 items-center justify-center rounded-sm border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                  className="flex size-8 items-center justify-center rounded-sm border border-(--border) bg-(--surface) text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--accent)"
                 >
                   <Icon size={15} />
                 </a>
