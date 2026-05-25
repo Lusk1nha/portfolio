@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { GithubLogoIcon, StarIcon, GitForkIcon, ArrowSquareOutIcon } from '@phosphor-icons/react'
 import { SectionTitle } from '@/presentation/components/ui/SectionTitle/SectionTitle'
 import { Card } from '@/presentation/components/ui/Card/Card'
@@ -14,12 +14,12 @@ import type { Project } from '@/domain/entities/Project'
 const repository = new StaticProjectRepository()
 const getAllProjects = new GetAllProjects(repository)
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08 } },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 }
@@ -45,7 +45,7 @@ export function ProjectsPage() {
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
-              <Card accentTop hover className="flex h-full flex-col p-5">
+              <Card hover className="flex h-full flex-col p-5">
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <h3 className="text-[13px] font-semibold leading-snug text-[var(--fg)]">
                     {project.name}

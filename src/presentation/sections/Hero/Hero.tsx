@@ -6,6 +6,7 @@ import { Button } from '@/presentation/components/ui/Button/Button'
 import { TerminalWindow } from '@/presentation/components/ui/TerminalWindow/TerminalWindow'
 import { useLanguage } from '@/presentation/contexts/LanguageContext'
 import { getYearsLabel } from '@/domain/value-objects/YearsOfExperience'
+import avatarSrc from '@/assets/lucas-pedro.jpg'
 
 const SOCIAL_LINKS = [
   { icon: GithubLogoIcon, href: 'https://github.com/Lusk1nha', label: 'GitHub' },
@@ -72,6 +73,26 @@ export function Hero() {
             animate="visible"
             className="space-y-5"
           >
+            {/* Avatar */}
+            <motion.div variants={itemVariants}>
+              <div className="relative inline-block">
+                <div
+                  className="absolute -inset-0.5 rounded-full opacity-60 blur-sm"
+                  style={{ background: 'var(--accent)' }}
+                />
+                <img
+                  src={avatarSrc}
+                  alt="Lucas Pedro da Hora"
+                  className="relative size-20 rounded-full object-cover ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--bg)]"
+                />
+                <span
+                  className="absolute bottom-0.5 right-0.5 size-3.5 rounded-full border-2 border-[var(--bg)]"
+                  style={{ background: 'var(--success)' }}
+                  title="Online"
+                />
+              </div>
+            </motion.div>
+
             <motion.div variants={itemVariants}>
               <Badge variant="accent" pulse>
                 {t.hero.badge}

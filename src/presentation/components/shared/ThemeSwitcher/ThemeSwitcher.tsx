@@ -1,12 +1,56 @@
 import { useState, useRef, useEffect } from 'react'
-import { PaintBrushIcon } from '@phosphor-icons/react'
+import { SunIcon, MoonIcon } from '@phosphor-icons/react'
 import { useTheme } from '@/presentation/contexts/ThemeContext'
 import { motion, AnimatePresence } from 'framer-motion'
+import type { Theme } from '@/domain/entities/Theme'
+
+function ThemeSwatch({ theme, active, onClick }: { theme: Theme; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      title={theme.label}
+      className={`group relative flex flex-col gap-1.5 rounded-sm border p-2.5 text-left transition-all ${
+        active
+          ? 'border-[var(--accent)] bg-[var(--accent)]/8'
+          : 'border-[var(--border)] hover:border-[var(--accent)]/50 hover:bg-[var(--surface-hover)]'
+      }`}
+    >
+      {/* Color preview */}
+      <div
+        className="h-7 w-full rounded-sm border border-black/10 overflow-hidden flex"
+        style={{ background: theme.bg }}
+      >
+        <div className="h-full w-1/2" style={{ background: theme.bg }} />
+        <div className="h-full w-1/2" style={{ background: theme.accent }} />
+      </div>
+
+      {/* Label */}
+      <span
+        className={`truncate text-[10px] font-medium leading-none ${
+          active ? 'text-[var(--accent)]' : 'text-[var(--muted)] group-hover:text-[var(--fg)]'
+        }`}
+      >
+        {theme.label}
+      </span>
+
+      {/* Active indicator */}
+      {active && (
+        <span
+          className="absolute right-1.5 top-1.5 size-1.5 rounded-full"
+          style={{ background: 'var(--accent)' }}
+        />
+      )}
+    </button>
+  )
+}
 
 export function ThemeSwitcher() {
-  const { theme, themes, setTheme } = useTheme()
+  const { theme, themeData, themes, setTheme } = useTheme()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+
+  const darkThemes = themes.filter((t) => t.mode === 'dark')
+  const lightThemes = themes.filter((t) => t.mode === 'light')
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -18,6 +62,8 @@ export function ThemeSwitcher() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  const ModeIcon = themeData.mode === 'dark' ? MoonIcon : SunIcon
+
   return (
     <div ref={ref} className="relative">
       <button
@@ -25,35 +71,59 @@ export function ThemeSwitcher() {
         className="flex h-8 items-center gap-1.5 rounded-sm border border-[var(--border)] bg-[var(--surface)] px-2.5 text-[11px] text-[var(--muted)] transition-all hover:border-[var(--accent)]/50 hover:text-[var(--fg)]"
         aria-label="Switch theme"
       >
-        <PaintBrushIcon size={13} />
-        <span className="hidden sm:inline">{theme}</span>
+        {/* Current accent dot */}
+        <span
+          className="size-2 rounded-full flex-shrink-0"
+          style={{ background: themeData.accent }}
+        />
+        <span className="hidden sm:inline max-w-[72px] truncate">{theme}</span>
+        <ModeIcon size={11} className="ml-0.5 flex-shrink-0" />
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -4, scale: 0.97 }}
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.97 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-10 z-50 min-w-[200px] rounded-sm border border-[var(--border)] bg-[var(--surface-2)] p-1 shadow-xl"
+            className="absolute right-0 top-10 z-50 w-72 rounded-sm border border-[var(--border)] bg-[var(--surface-2)] p-3 shadow-2xl"
           >
-            {themes.map((t) => (
-              <button
-                key={t.name}
-                onClick={() => { setTheme(t.name); setOpen(false) }}
-                className={`flex w-full items-center gap-2.5 rounded-sm px-2.5 py-1.5 text-[11px] transition-colors hover:bg-[var(--surface-hover)] ${
-                  theme === t.name ? 'text-[var(--accent)]' : 'text-[var(--fg)]'
-                }`}
-              >
-                <span
-                  className="size-3 rounded-full border border-white/10 flex-shrink-0"
-                  style={{ background: t.accent }}
-                />
-                <span>{t.label}</span>
-                <span className="ml-auto text-[10px] text-[var(--muted)]">{t.description}</span>
-              </button>
-            ))}
+            {/* Dark group */}
+            <div className="mb-3">
+              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+                <MoonIcon size={10} />
+                Dark
+              </p>
+              <div className="grid grid-cols-4 gap-1.5">
+                {darkThemes.map((t) => (
+                  <ThemeSwatch
+                    key={t.name}
+                    theme={t}
+                    active={theme === t.name}
+                    onClick={() => { setTheme(t.name); setOpen(false) }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Light group */}
+            <div className="border-t border-[var(--border)] pt-3">
+              <p className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+                <SunIcon size={10} />
+                Light
+              </p>
+              <div className="grid grid-cols-4 gap-1.5">
+                {lightThemes.map((t) => (
+                  <ThemeSwatch
+                    key={t.name}
+                    theme={t}
+                    active={theme === t.name}
+                    onClick={() => { setTheme(t.name); setOpen(false) }}
+                  />
+                ))}
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

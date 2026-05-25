@@ -1,9 +1,10 @@
 /* ============================================================
    PORTFOLIO THEME SYSTEM
-   8 dark themes — applied via data-theme attribute on <html>
+   applied via data-theme attribute on <html>
    ============================================================ */
 
-/* Default: Midnight (GitHub Dark) */
+/* ── DARK THEMES ─────────────────────────────────────────── */
+
 :root,
 [data-theme="midnight"] {
   --bg: #0d1117;
@@ -139,4 +140,108 @@
   --success: #00ff9f;
   --warning: #ffaa00;
   --destructive: #ff3366;
+}
+
+[data-theme="forest"] {
+  --bg: #0d1a0f;
+  --surface: #122015;
+  --surface-2: #1a2e1d;
+  --surface-hover: #223d26;
+  --border: #2a4a2e;
+  --fg: #d4edda;
+  --muted: #5a8a60;
+  --accent: #4ade80;
+  --accent-hover: #6ee89a;
+  --accent-fg: #0d1a0f;
+  --ring: #4ade8040;
+  --success: #4ade80;
+  --warning: #facc15;
+  --destructive: #f87171;
+}
+
+[data-theme="rose-pine"] {
+  --bg: #191724;
+  --surface: #1f1d2e;
+  --surface-2: #26233a;
+  --surface-hover: #2e2b42;
+  --border: #403d52;
+  --fg: #e0def4;
+  --muted: #6e6a86;
+  --accent: #c4a7e7;
+  --accent-hover: #d4baf0;
+  --accent-fg: #191724;
+  --ring: #c4a7e740;
+  --success: #9ccfd8;
+  --warning: #f6c177;
+  --destructive: #eb6f92;
+}
+
+/* ── LIGHT THEMES ────────────────────────────────────────── */
+
+[data-theme="coffee"] {
+  --bg: #f5ede4;
+  --surface: #ede0d4;
+  --surface-2: #e2d0c0;
+  --surface-hover: #d6bfaa;
+  --border: #c9ae98;
+  --fg: #2c1a0e;
+  --muted: #7a5c45;
+  --accent: #8b4513;
+  --accent-hover: #a0521a;
+  --accent-fg: #f5ede4;
+  --ring: #8b451340;
+  --success: #3a7a3a;
+  --warning: #b8860b;
+  --destructive: #c0392b;
+}
+
+[data-theme="paper"] {
+  --bg: #f8f4ec;
+  --surface: #f0ead8;
+  --surface-2: #e8dfc8;
+  --surface-hover: #ddd3b8;
+  --border: #cfc3a4;
+  --fg: #1a1510;
+  --muted: #7a6a50;
+  --accent: #5c4a2a;
+  --accent-hover: #7a6238;
+  --accent-fg: #f8f4ec;
+  --ring: #5c4a2a40;
+  --success: #3d6b3d;
+  --warning: #b07d10;
+  --destructive: #b83232;
+}
+
+[data-theme="latte"] {
+  --bg: #eff1f5;
+  --surface: #e6e9ef;
+  --surface-2: #dce0e8;
+  --surface-hover: #ccd0da;
+  --border: #bcc0cc;
+  --fg: #4c4f69;
+  --muted: #8c8fa1;
+  --accent: #1e66f5;
+  --accent-hover: #3d7bf7;
+  --accent-fg: #ffffff;
+  --ring: #1e66f540;
+  --success: #40a02b;
+  --warning: #df8e1d;
+  --destructive: #d20f39;
+}
+
+[data-theme="sakura"] {
+  --bg: #fff5f7;
+  --surface: #fce8ed;
+  --surface-2: #f8d7e0;
+  --surface-hover: #f2c0cf;
+  --border: #e8a8bc;
+  --fg: #2d1520;
+  --muted: #9a6070;
+  --accent: #c94070;
+  --accent-hover: #e0567f;
+  --accent-fg: #fff5f7;
+  --ring: #c9407040;
+  --success: #3a8a5a;
+  --warning: #b87820;
+  --destructive: #c02030;
 }

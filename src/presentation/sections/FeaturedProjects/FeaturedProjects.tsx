@@ -65,7 +65,7 @@ export function FeaturedProjects() {
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
-              <Card accentTop hover className="flex h-full flex-col p-5">
+              <Card hover className="flex h-full flex-col p-5">
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <h3 className="text-[13px] font-semibold text-[var(--fg)] leading-snug">{project.name}</h3>
                   <div className="flex items-center gap-1 flex-shrink-0">
