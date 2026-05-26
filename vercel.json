@@ -41,7 +41,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com https://opengraph.githubassets.com; font-src 'self' data:; connect-src 'self' data: blob: https://api.github.com https://vitals.vercel-insights.com https://va.vercel-scripts.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-jl3BSv/9VvFm9BUebTG6rIuNG2jBPwNLEyS/ppnMK3U=' https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com https://opengraph.githubassets.com; font-src 'self' data:; connect-src 'self' data: blob: https://api.github.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.clarity.ms https://*.clarity.ms; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
         }
       ]
     }
