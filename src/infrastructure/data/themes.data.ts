@@ -94,6 +94,25 @@ export const THEMES: Record<ThemeName, Theme> = {
     mode: "dark",
   },
 
+  gruvbox: {
+    name: "gruvbox",
+    label: "Gruvbox",
+    accent: "#d79921",
+    bg: "#282828",
+    fg: "#ebdbb2",
+    description: "Warm Retro",
+    mode: "dark",
+  },
+  monokai: {
+    name: "monokai",
+    label: "Monokai",
+    accent: "#a6e22e",
+    bg: "#272822",
+    fg: "#f8f8f2",
+    description: "Classic Editor",
+    mode: "dark",
+  },
+
   // ── Light ─────────────────────────────────────────────────
   coffee: {
     name: "coffee",

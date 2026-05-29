@@ -1,13 +1,17 @@
-import { motion } from "framer-motion"
+import { useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   GithubLogoIcon,
   LinkedinLogoIcon,
   EnvelopeIcon,
   MapPinIcon,
+  GraduationCapIcon,
+  TranslateIcon,
 } from "@phosphor-icons/react"
 import { Link } from "react-router-dom"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
 import { Button } from "@/presentation/components/ui/Button/Button"
+import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { InteractiveTerminal } from "@/presentation/components/ui/InteractiveTerminal/InteractiveTerminal"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
 import { getYearsLabel } from "@/domain/value-objects/YearsOfExperience"
@@ -31,6 +35,8 @@ const SOCIAL_LINKS = [
   },
 ]
 
+const AVATAR_CLICKS_TO_TRIGGER = 5
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -47,6 +53,23 @@ const itemVariants = {
 export function Hero() {
   const { t, language } = useLanguage()
   const yearsLabel = getYearsLabel(language)
+  const avatarClicksRef = useRef(0)
+  const [showEgg, setShowEgg] = useState(false)
+
+  function handleAvatarClick() {
+    avatarClicksRef.current += 1
+    if (avatarClicksRef.current >= AVATAR_CLICKS_TO_TRIGGER) {
+      avatarClicksRef.current = 0
+      setShowEgg(true)
+      setTimeout(() => setShowEgg(false), 3500)
+    }
+  }
+
+  const interests = [
+    t.about.beyond.running.split("—")[0].trim(),
+    t.about.beyond.coffee,
+    t.about.beyond.gaming,
+  ]
 
   return (
     <section className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28">
@@ -62,6 +85,7 @@ export function Hero() {
           opacity: 0.3,
         }}
       />
+      {/* Radial fade — stays in place to maintain edge softening */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -79,9 +103,13 @@ export function Hero() {
             animate="visible"
             className="space-y-5"
           >
-            {/* Avatar */}
+            {/* Avatar with easter egg */}
             <motion.div variants={itemVariants}>
-              <div className="relative inline-block">
+              <div
+                className="relative inline-block cursor-pointer select-none"
+                onClick={handleAvatarClick}
+                title="..."
+              >
                 <div
                   className="absolute -inset-0.5 rounded-full opacity-60 blur-sm"
                   style={{ background: "var(--accent)" }}
@@ -90,12 +118,26 @@ export function Hero() {
                   src={avatarSrc}
                   alt="Lucas Pedro da Hora"
                   className="relative size-20 rounded-full object-cover ring-2 ring-(--accent) ring-offset-2 ring-offset-(--bg)"
+                  draggable={false}
                 />
                 <span
                   className="absolute right-0.5 bottom-0.5 size-3.5 rounded-full border-2 border-(--bg)"
                   style={{ background: "var(--success)" }}
                   title="Online"
                 />
+                <AnimatePresence>
+                  {showEgg && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 4, scale: 0.9 }}
+                      animate={{ opacity: 1, y: -8, scale: 1 }}
+                      exit={{ opacity: 0, y: -16, scale: 0.9 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm border border-(--accent)/40 bg-(--surface) px-2.5 py-1 text-[10px] text-(--accent) shadow-lg"
+                    >
+                      try 'secret' in the terminal
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
 
@@ -171,6 +213,29 @@ export function Hero() {
                   <Icon size={15} />
                 </a>
               ))}
+            </motion.div>
+
+            {/* Extra info: education, languages, interests */}
+            <motion.div
+              variants={itemVariants}
+              className="space-y-2 border-t border-(--border) pt-3"
+            >
+              <div className="flex items-center gap-1.5 text-[11px] text-(--muted)">
+                <GraduationCapIcon size={11} />
+                <span>ADS · FAM – Centro Universitário das Américas · 2021–2023</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-[11px] text-(--muted)">
+                <TranslateIcon size={11} />
+                <span>{t.hero.languages}</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[10px] text-(--muted)">
+                  {t.about.beyond.title}:
+                </span>
+                {interests.map((item) => (
+                  <Tag key={item}>{item}</Tag>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 

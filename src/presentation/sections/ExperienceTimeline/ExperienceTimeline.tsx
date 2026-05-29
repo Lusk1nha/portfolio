@@ -27,14 +27,15 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
   const { t, language } = useLanguage()
   const experiences = getExperiences.execute()
   const displayed = compact ? experiences.slice(0, 2) : experiences
-
   return (
     <section className="px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          title={t.experience.title}
-          subtitle={t.experience.subtitle}
-        />
+        <div>
+          <SectionTitle
+            title={t.experience.title}
+            subtitle={t.experience.subtitle}
+          />
+        </div>
 
         <div className="space-y-6">
           {displayed.map((exp, i) => (

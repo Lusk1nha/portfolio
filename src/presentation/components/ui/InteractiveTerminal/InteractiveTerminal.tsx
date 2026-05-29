@@ -68,6 +68,7 @@ const COMMAND_REGISTRY: Record<
       { type: "output", content: "  cv           — go to /cv" },
       { type: "output", content: "  ls           — list pages" },
       { type: "output", content: "  clear        — clear terminal" },
+      { type: "output", content: "  ...and a few secrets" },
       { type: "blank", content: "" }
     )
   },
@@ -129,6 +130,88 @@ const COMMAND_REGISTRY: Record<
   },
   clear: ({ clear }) => clear(),
 
+  // Easter eggs
+  sudo: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "error", content: "  sudo: Permission denied." },
+      { type: "output", content: "  This incident will be reported." },
+      { type: "blank", content: "" }
+    )
+  },
+
+  matrix: ({ push }) => {
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ"
+    const rand = () => chars[Math.floor(Math.random() * chars.length)]
+    const row = () => Array.from({ length: 11 }, rand).join(" ")
+    push(
+      { type: "blank", content: "" },
+      { type: "accent", content: `  ${row()}` },
+      { type: "accent", content: `  ${row()}` },
+      { type: "accent", content: `  ${row()}` },
+      { type: "accent", content: `  ${row()}` },
+      { type: "blank", content: "" },
+      { type: "output", content: "  Wake up, Neo..." },
+      { type: "blank", content: "" }
+    )
+  },
+
+  hack: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "accent", content: "  [CONNECTING] target: mainframe..." },
+      { type: "output", content: "  Bypassing firewall... [##########] 100%" },
+      { type: "output", content: "  Cracking encryption... done" },
+      { type: "accent", content: "  [ACCESS GRANTED]" },
+      { type: "output", content: "  Just kidding. Clean code > hacking." },
+      { type: "blank", content: "" }
+    )
+  },
+
+  coffee: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "output", content: "       ( (" },
+      { type: "output", content: "        ) )" },
+      { type: "output", content: "     .........." },
+      { type: "output", content: "     |        |]" },
+      { type: "output", content: "     \\        /" },
+      { type: "output", content: "      `------'" },
+      { type: "blank", content: "" },
+      { type: "accent", content: "  Fuel loaded. Ready to code." },
+      { type: "blank", content: "" }
+    )
+  },
+
+  fortune: ({ push }) => {
+    const quotes = [
+      "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. — Fowler",
+      "First, solve the problem. Then, write the code. — Johnson",
+      "Code is like humor. When you have to explain it, it's bad. — House",
+      "Simplicity is the soul of efficiency. — Freeman",
+      "Make it work, make it right, make it fast. — Beck",
+    ]
+    const quote = quotes[Math.floor(Math.random() * quotes.length)]
+    push(
+      { type: "blank", content: "" },
+      { type: "output", content: `  "${quote}"` },
+      { type: "blank", content: "" }
+    )
+  },
+
+  secret: ({ push }) => {
+    push(
+      { type: "blank", content: "" },
+      { type: "accent", content: "  [ easter eggs ]" },
+      { type: "output", content: "  matrix    — enter the matrix" },
+      { type: "output", content: "  hack      — i'm in" },
+      { type: "output", content: "  coffee    — fuel up" },
+      { type: "output", content: "  fortune   — words of wisdom" },
+      { type: "output", content: "  sudo      — try rm -rf /" },
+      { type: "blank", content: "" }
+    )
+  },
+
   // Navegações
   projects: (ctx) => navigateTo(ctx, "/projects"),
   experience: (ctx) => navigateTo(ctx, "/experience"),
@@ -151,6 +234,10 @@ const ALIASES: Record<string, string> = {
   "cd cv": "cv",
   "cd home": "home",
   "cd /": "home",
+  "sudo rm -rf /": "sudo",
+  "sudo rm -rf /*": "sudo",
+  "sudo su": "sudo",
+  "sudo apt-get": "sudo",
 }
 
 const ALL_COMMANDS = Object.keys(COMMAND_REGISTRY)
@@ -176,7 +263,7 @@ function useTerminal() {
     setLines((prev) => [...prev, ...newLines.map((l) => ({ ...l, id: uid() }))])
   }, [])
 
-  const clear = useCallback(() => setLines(INITIAL_LINES), [])
+  const clear = useCallback(() => setLines([]), [])
 
   const handleCommand = useCallback(
     (raw: string) => {
@@ -300,7 +387,7 @@ export function InteractiveTerminal() {
       </div>
 
       {/* Output */}
-      <div ref={outputRef} className="flex-1 space-y-0.5 overflow-y-auto p-3">
+      <div ref={outputRef} data-testid="terminal-output" className="flex-1 space-y-0.5 overflow-y-auto p-3">
         <AnimatePresence initial={false}>
           {lines.map((line) => (
             <motion.div

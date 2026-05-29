@@ -11,6 +11,8 @@ export type ThemeName =
   | "night-runner"
   | "forest"
   | "rose-pine"
+  | "gruvbox"
+  | "monokai"
   | "coffee"
   | "paper"
   | "latte"
@@ -27,6 +29,8 @@ export const THEME_NAMES: ThemeName[] = [
   "night-runner",
   "forest",
   "rose-pine",
+  "gruvbox",
+  "monokai",
   "coffee",
   "paper",
   "latte",
@@ -44,6 +48,8 @@ export const DARK_THEMES: ThemeName[] = [
   "night-runner",
   "forest",
   "rose-pine",
+  "gruvbox",
+  "monokai",
 ]
 
 export const LIGHT_THEMES: ThemeName[] = ["coffee", "paper", "latte", "sakura"]

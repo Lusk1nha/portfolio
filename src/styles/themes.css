@@ -176,6 +176,40 @@
   --destructive: #eb6f92;
 }
 
+[data-theme="gruvbox"] {
+  --bg: #282828;
+  --surface: #3c3836;
+  --surface-2: #504945;
+  --surface-hover: #665c54;
+  --border: #665c54;
+  --fg: #ebdbb2;
+  --muted: #928374;
+  --accent: #d79921;
+  --accent-hover: #fabd2f;
+  --accent-fg: #282828;
+  --ring: #d7992140;
+  --success: #98971a;
+  --warning: #d65d0e;
+  --destructive: #cc241d;
+}
+
+[data-theme="monokai"] {
+  --bg: #272822;
+  --surface: #3e3d32;
+  --surface-2: #49483e;
+  --surface-hover: #5e5d51;
+  --border: #49483e;
+  --fg: #f8f8f2;
+  --muted: #75715e;
+  --accent: #a6e22e;
+  --accent-hover: #c0f050;
+  --accent-fg: #272822;
+  --ring: #a6e22e40;
+  --success: #a6e22e;
+  --warning: #e6db74;
+  --destructive: #f92672;
+}
+
 /* ── LIGHT THEMES ────────────────────────────────────────── */
 
 [data-theme="coffee"] {

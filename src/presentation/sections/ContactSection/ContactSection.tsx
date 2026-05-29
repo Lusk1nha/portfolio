@@ -42,7 +42,6 @@ export function ContactSection() {
   const { t } = useLanguage()
   const [formState, setFormState] = useState<FormState>("idle")
   const [fields, setFields] = useState({ name: "", email: "", message: "" })
-
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {

@@ -17,7 +17,6 @@ export function StackGrid({ compact = false }: { compact?: boolean }) {
         ["frontend", "backend", "architecture"].includes(g.group)
       )
     : groups
-
   return (
     <section className="px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-6xl">

@@ -19,6 +19,7 @@ export interface Translations {
     cta_cv: string
     location: string
     available: string
+    languages: string
     terminal: {
       line1: string
       line2: string
@@ -188,6 +189,7 @@ export const pt: Translations = {
     cta_cv: "Ver currículo",
     location: "São Paulo, SP",
     available: "Disponível",
+    languages: "PT Nativo · EN Intermediário",
     terminal: {
       line1: "$ whoami",
       line2: "> lucas-pedro-da-hora",

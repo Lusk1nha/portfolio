@@ -38,7 +38,6 @@ export function FeaturedProjects() {
   const [projects, setProjects] = useState<Project[]>(
     LOCAL_PROJECTS.filter((p) => p.featured).slice(0, 6)
   )
-
   useEffect(() => {
     getFeaturedProjects.execute().then((p) => {
       setProjects(p.slice(0, 6))

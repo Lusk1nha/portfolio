@@ -1,4 +1,5 @@
 import { Hero } from "@/presentation/sections/Hero/Hero"
+import { About } from "@/presentation/sections/About/About"
 import { FeaturedProjects } from "@/presentation/sections/FeaturedProjects/FeaturedProjects"
 import { ExperienceTimeline } from "@/presentation/sections/ExperienceTimeline/ExperienceTimeline"
 import { StackGrid } from "@/presentation/sections/StackGrid/StackGrid"
@@ -10,6 +11,9 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <div className="border-t border-(--border)">
+        <About />
+      </div>
       <div className="border-t border-(--border)">
         <FeaturedProjects />
       </div>

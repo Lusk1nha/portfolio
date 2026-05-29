@@ -22,6 +22,7 @@ export const es: Translations = {
     cta_cv: "Ver currículum",
     location: "São Paulo, SP",
     available: "Disponible",
+    languages: "PT Nativo · EN Intermedio",
     terminal: {
       line1: "$ whoami",
       line2: "> lucas-pedro-da-hora",

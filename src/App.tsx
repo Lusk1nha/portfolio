@@ -8,6 +8,7 @@ import {
   shouldShowBoot,
 } from "@/presentation/components/ui/BootSequence/BootSequence"
 import { ErrorBoundary } from "@/presentation/components/ui/ErrorBoundary/ErrorBoundary"
+import { TerminalCursor } from "@/presentation/components/ui/TerminalCursor/TerminalCursor"
 
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <>
+      <TerminalCursor />
       <ErrorBoundary>
         <ThemeProvider>
           <LanguageProvider>
