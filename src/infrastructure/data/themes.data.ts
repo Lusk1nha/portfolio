@@ -115,10 +115,10 @@ export const THEMES: Record<ThemeName, Theme> = {
   cs16: {
     name: "cs16",
     label: "CS 1.6",
-    accent: "#e8a000",
-    bg: "#0c0c08",
-    fg: "#b8c418",
-    description: "Tactical Olive",
+    accent: "#e7a113",
+    bg: "#2d3529",
+    fg: "#e1e9db",
+    description: "Classic Valve & Steam 2003",
     mode: "dark",
   },
   doom: {

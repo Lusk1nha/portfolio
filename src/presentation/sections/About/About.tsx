@@ -44,7 +44,7 @@ export function About() {
             const Icon = PILLAR_ICONS[i]
             return (
               <motion.div
-                key={title}
+                key={i}
                 variants={cardVariants}
                 className="overflow-hidden rounded-sm border border-(--border) bg-(--surface)"
               >

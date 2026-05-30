@@ -194,20 +194,20 @@
 }
 
 [data-theme="cs16"] {
-  --bg: #0c0c08;
-  --surface: #141410;
-  --surface-2: #1e1e16;
-  --surface-hover: #28281c;
-  --border: #3a3a28;
-  --fg: #b8c418;
-  --muted: #606610;
-  --accent: #e8a000;
-  --accent-hover: #ffb820;
-  --accent-fg: #0c0c08;
-  --ring: #e8a00040;
-  --success: #6a9800;
-  --warning: #e8a000;
-  --destructive: #cc2200;
+  --bg: #2d3529;
+  --surface: #384332;
+  --surface-2: #4b5643;
+  --surface-hover: #5a6a50;
+  --border: #232a1f;
+  --fg: #e1e9db;
+  --muted: #76876f;
+  --accent: #e7a113;
+  --accent-hover: #ffbe3b;
+  --accent-fg: #1f251c;
+  --ring: #e7a11340;
+  --success: #66bb6a;
+  --warning: #e7a113;
+  --destructive: #ff3333;
 }
 
 [data-theme="monokai"] {
