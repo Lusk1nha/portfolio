@@ -13,10 +13,23 @@ export type ThemeName =
   | "rose-pine"
   | "gruvbox"
   | "monokai"
+  | "cs16"
+  | "doom"
+  | "catppuccin-mocha"
+  | "solarized-dark"
+  | "ayu-dark"
+  | "obsidian"
+  | "outrun"
   | "coffee"
-  | "paper"
-  | "latte"
   | "sakura"
+  | "citrus"
+  | "bubblegum"
+  | "dune"
+  | "glacier"
+  | "meadow"
+  | "sunset"
+  | "amethyst"
+  | "blossom"
 
 export const THEME_NAMES: ThemeName[] = [
   "midnight",
@@ -31,10 +44,23 @@ export const THEME_NAMES: ThemeName[] = [
   "rose-pine",
   "gruvbox",
   "monokai",
+  "cs16",
+  "doom",
+  "catppuccin-mocha",
+  "solarized-dark",
+  "ayu-dark",
+  "obsidian",
+  "outrun",
   "coffee",
-  "paper",
-  "latte",
   "sakura",
+  "citrus",
+  "bubblegum",
+  "dune",
+  "glacier",
+  "meadow",
+  "sunset",
+  "amethyst",
+  "blossom",
 ]
 
 export const DARK_THEMES: ThemeName[] = [
@@ -50,8 +76,26 @@ export const DARK_THEMES: ThemeName[] = [
   "rose-pine",
   "gruvbox",
   "monokai",
+  "cs16",
+  "doom",
+  "catppuccin-mocha",
+  "solarized-dark",
+  "ayu-dark",
+  "obsidian",
+  "outrun",
 ]
 
-export const LIGHT_THEMES: ThemeName[] = ["coffee", "paper", "latte", "sakura"]
+export const LIGHT_THEMES: ThemeName[] = [
+  "coffee",
+  "sakura",
+  "citrus",
+  "bubblegum",
+  "dune",
+  "glacier",
+  "meadow",
+  "sunset",
+  "amethyst",
+  "blossom",
+]
 
 export const DEFAULT_THEME: ThemeName = "midnight"

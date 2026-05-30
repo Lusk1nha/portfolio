@@ -84,7 +84,7 @@ export function ThemeSwitcher() {
           className="size-2 shrink-0 rounded-full"
           style={{ background: themeData.accent }}
         />
-        <span className="hidden max-w-[72px] truncate sm:inline">{theme}</span>
+        <span className="hidden max-w-18 truncate sm:inline">{theme}</span>
         <ModeIcon size={11} className="ml-0.5 shrink-0" />
       </button>
 
@@ -111,7 +111,6 @@ export function ThemeSwitcher() {
                     active={theme === t.name}
                     onClick={() => {
                       setTheme(t.name)
-                      setOpen(false)
                     }}
                   />
                 ))}
@@ -132,7 +131,6 @@ export function ThemeSwitcher() {
                     active={theme === t.name}
                     onClick={() => {
                       setTheme(t.name)
-                      setOpen(false)
                     }}
                   />
                 ))}
