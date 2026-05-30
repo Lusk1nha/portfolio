@@ -134,8 +134,10 @@ export const fr: Translations = {
       success_title: "Message envoyé !",
       success_message: "Merci de m'avoir contacté. Je vous répondrai bientôt.",
       error_title: "Échec de l'envoi",
-      error_message: "Une erreur est survenue. Réessayez ou utilisez l'email directement.",
-      rate_limited_message: "Trop de tentatives. Veuillez patienter avant d'envoyer à nouveau.",
+      error_message:
+        "Une erreur est survenue. Réessayez ou utilisez l'email directement.",
+      rate_limited_message:
+        "Trop de tentatives. Veuillez patienter avant d'envoyer à nouveau.",
       retry: "Réessayer",
     },
   },

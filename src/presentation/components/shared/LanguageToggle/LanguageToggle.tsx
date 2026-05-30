@@ -5,9 +5,9 @@ import type { Language } from "@/domain/value-objects/Language"
 
 const LANG_OPTIONS: { code: Language; label: string; native: string }[] = [
   { code: "pt", label: "Português", native: "PT" },
-  { code: "en", label: "English",   native: "EN" },
-  { code: "es", label: "Español",   native: "ES" },
-  { code: "fr", label: "Français",  native: "FR" },
+  { code: "en", label: "English", native: "EN" },
+  { code: "es", label: "Español", native: "ES" },
+  { code: "fr", label: "Français", native: "FR" },
 ]
 
 export function LanguageToggle() {
@@ -48,7 +48,7 @@ export function LanguageToggle() {
       {open && (
         <div
           role="listbox"
-          className="absolute right-0 top-full z-50 mt-1 min-w-30 overflow-hidden rounded-sm border border-(--border) bg-(--surface) shadow-lg"
+          className="absolute top-full right-0 z-50 mt-1 min-w-30 overflow-hidden rounded-sm border border-(--border) bg-(--surface) shadow-lg"
         >
           {LANG_OPTIONS.map((lang) => {
             const active = lang.code === language

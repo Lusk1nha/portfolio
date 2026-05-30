@@ -106,7 +106,8 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                       </span>
                       <span className="flex items-center gap-1">
                         <MapPinIcon size={10} />
-                        {localText(exp.location, language)} · {localText(exp.modality, language)}
+                        {localText(exp.location, language)} ·{" "}
+                        {localText(exp.modality, language)}
                       </span>
                     </div>
 

@@ -134,8 +134,10 @@ export const es: Translations = {
       success_title: "¡Mensaje enviado!",
       success_message: "Gracias por contactarme. Te responderé pronto.",
       error_title: "Error al enviar",
-      error_message: "Algo salió mal. Inténtalo de nuevo o usa el email directamente.",
-      rate_limited_message: "Demasiados intentos. Espera un momento antes de enviar de nuevo.",
+      error_message:
+        "Algo salió mal. Inténtalo de nuevo o usa el email directamente.",
+      rate_limited_message:
+        "Demasiados intentos. Espera un momento antes de enviar de nuevo.",
       retry: "Intentar de nuevo",
     },
   },

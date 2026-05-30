@@ -103,7 +103,8 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
           >
             {exp.company}
             <span className="ml-2 font-normal text-(--muted)">
-              · {localText(exp.location, language)} · {localText(exp.modality, language)}
+              · {localText(exp.location, language)} ·{" "}
+              {localText(exp.modality, language)}
             </span>
           </p>
         </div>
@@ -117,17 +118,19 @@ function ExperienceItem({ exp, language, presentLabel }: any) {
       </p>
 
       <ul className="mt-2 space-y-1">
-        {localTextArray(exp.highlights, language).map((highlight: string, index: number) => (
-          <li key={index} className="flex gap-2 text-[11px] text-(--muted)">
-            <span
-              className="mt-0.5 shrink-0"
-              style={{ color: "var(--accent)" }}
-            >
-              ▸
-            </span>
-            {highlight}
-          </li>
-        ))}
+        {localTextArray(exp.highlights, language).map(
+          (highlight: string, index: number) => (
+            <li key={index} className="flex gap-2 text-[11px] text-(--muted)">
+              <span
+                className="mt-0.5 shrink-0"
+                style={{ color: "var(--accent)" }}
+              >
+                ▸
+              </span>
+              {highlight}
+            </li>
+          )
+        )}
       </ul>
 
       <div className="mt-2 flex flex-wrap gap-1.5">

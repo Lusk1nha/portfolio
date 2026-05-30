@@ -54,7 +54,9 @@ function formatPeriod(
 
 function groupStack() {
   return STACK_GROUP_ORDER.reduce<Record<string, string[]>>((acc, group) => {
-    const items = STACK_ITEMS.filter((s) => s.group === group).map((s) => s.name)
+    const items = STACK_ITEMS.filter((s) => s.group === group).map(
+      (s) => s.name
+    )
     if (items.length) acc[group] = items
     return acc
   }, {})
@@ -356,10 +358,7 @@ export function CvDocument({ language, t }: CvDocumentProps) {
 
           <View style={s.contactRow}>
             <View style={s.contactItem}>
-              <Link
-                src="mailto:lucaspedro517@gmail.com"
-                style={s.contactText}
-              >
+              <Link src="mailto:lucaspedro517@gmail.com" style={s.contactText}>
                 lucaspedro517@gmail.com
               </Link>
             </View>
@@ -374,10 +373,7 @@ export function CvDocument({ language, t }: CvDocumentProps) {
             </View>
             <Text style={s.contactDot}>·</Text>
             <View style={s.contactItem}>
-              <Link
-                src="https://github.com/Lusk1nha"
-                style={s.contactText}
-              >
+              <Link src="https://github.com/Lusk1nha" style={s.contactText}>
                 github.com/Lusk1nha
               </Link>
             </View>
@@ -422,14 +418,12 @@ export function CvDocument({ language, t }: CvDocumentProps) {
                 {localText(exp.description, language)}
               </Text>
 
-              {localTextArray(exp.highlights, language).map(
-                (highlight, i) => (
-                  <View key={i} style={s.highlight}>
-                    <Text style={s.bulletSymbol}>▸</Text>
-                    <Text style={s.highlightText}>{highlight}</Text>
-                  </View>
-                )
-              )}
+              {localTextArray(exp.highlights, language).map((highlight, i) => (
+                <View key={i} style={s.highlight}>
+                  <Text style={s.bulletSymbol}>▸</Text>
+                  <Text style={s.highlightText}>{highlight}</Text>
+                </View>
+              ))}
 
               {exp.stack.length > 0 && (
                 <View style={s.stackRow}>
@@ -480,7 +474,9 @@ export function CvDocument({ language, t }: CvDocumentProps) {
 
         {/* ── Footer ──────────────────────────────────────────── */}
         <View style={s.footer} fixed>
-          <Text style={s.footerText}>Lucas Pedro da Hora · Full Stack Developer</Text>
+          <Text style={s.footerText}>
+            Lucas Pedro da Hora · Full Stack Developer
+          </Text>
           <Link src="https://lucaspedro.dev" style={s.footerAccent}>
             lucaspedro.dev
           </Link>

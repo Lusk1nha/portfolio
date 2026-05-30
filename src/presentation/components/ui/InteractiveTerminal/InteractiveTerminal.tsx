@@ -387,7 +387,11 @@ export function InteractiveTerminal() {
       </div>
 
       {/* Output */}
-      <div ref={outputRef} data-testid="terminal-output" className="flex-1 space-y-0.5 overflow-y-auto p-3">
+      <div
+        ref={outputRef}
+        data-testid="terminal-output"
+        className="flex-1 space-y-0.5 overflow-y-auto p-3"
+      >
         <AnimatePresence initial={false}>
           {lines.map((line) => (
             <motion.div

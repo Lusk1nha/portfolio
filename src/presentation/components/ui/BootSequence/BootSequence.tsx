@@ -14,12 +14,28 @@ interface BootLine {
 }
 
 const LINES_PT: BootLine[] = [
-  { text: "LUCAS/OS v1.0.0  ·  Edição Terminal BIOS", type: "header", delay: 0 },
+  {
+    text: "LUCAS/OS v1.0.0  ·  Edição Terminal BIOS",
+    type: "header",
+    delay: 0,
+  },
   { text: "", type: "blank", delay: 180 },
   { text: "Verificando hardware...", type: "info", delay: 360 },
-  { text: "[  OK  ]  CPU: Motor Full Stack  ·  4+ anos de uptime", type: "ok", delay: 530 },
-  { text: "[  OK  ]  RAM: Cache de Arquitetura Limpa  ·  16GB", type: "ok", delay: 670 },
-  { text: "[  OK  ]  GPU: Acelerador Framer Motion  ·  60fps", type: "ok", delay: 810 },
+  {
+    text: "[  OK  ]  CPU: Motor Full Stack  ·  4+ anos de uptime",
+    type: "ok",
+    delay: 530,
+  },
+  {
+    text: "[  OK  ]  RAM: Cache de Arquitetura Limpa  ·  16GB",
+    type: "ok",
+    delay: 670,
+  },
+  {
+    text: "[  OK  ]  GPU: Acelerador Framer Motion  ·  60fps",
+    type: "ok",
+    delay: 810,
+  },
   { text: "", type: "blank", delay: 950 },
   { text: "Carregando módulos do kernel...", type: "info", delay: 1100 },
   { text: "[  OK  ]  react@19.2.6", type: "ok", delay: 1250 },
@@ -30,20 +46,44 @@ const LINES_PT: BootLine[] = [
   { text: "Iniciando serviços...", type: "info", delay: 1870 },
   { text: "[  OK  ]  portfolio.service", type: "ok", delay: 2020 },
   { text: "[  OK  ]  theme.service  →  midnight", type: "ok", delay: 2140 },
-  { text: "[  OK  ]  i18n.service  →  pt / en / es / fr", type: "ok", delay: 2260 },
+  {
+    text: "[  OK  ]  i18n.service  →  pt / en / es / fr",
+    type: "ok",
+    delay: 2260,
+  },
   { text: "", type: "blank", delay: 2380 },
   { text: "████████████████████  100%", type: "progress", delay: 2530 },
   { text: "", type: "blank", delay: 2680 },
-  { text: "Bem-vindo, visitante. Tenha uma boa sessão.", type: "header", delay: 2850 },
+  {
+    text: "Bem-vindo, visitante. Tenha uma boa sessão.",
+    type: "header",
+    delay: 2850,
+  },
 ]
 
 const LINES_EN: BootLine[] = [
-  { text: "LUCAS/OS v1.0.0  ·  BIOS Terminal Edition", type: "header", delay: 0 },
+  {
+    text: "LUCAS/OS v1.0.0  ·  BIOS Terminal Edition",
+    type: "header",
+    delay: 0,
+  },
   { text: "", type: "blank", delay: 180 },
   { text: "Checking hardware...", type: "info", delay: 360 },
-  { text: "[  OK  ]  CPU: Full Stack Engine  ·  4+ years uptime", type: "ok", delay: 530 },
-  { text: "[  OK  ]  RAM: Clean Architecture Cache  ·  16GB", type: "ok", delay: 670 },
-  { text: "[  OK  ]  GPU: Framer Motion Accelerator  ·  60fps", type: "ok", delay: 810 },
+  {
+    text: "[  OK  ]  CPU: Full Stack Engine  ·  4+ years uptime",
+    type: "ok",
+    delay: 530,
+  },
+  {
+    text: "[  OK  ]  RAM: Clean Architecture Cache  ·  16GB",
+    type: "ok",
+    delay: 670,
+  },
+  {
+    text: "[  OK  ]  GPU: Framer Motion Accelerator  ·  60fps",
+    type: "ok",
+    delay: 810,
+  },
   { text: "", type: "blank", delay: 950 },
   { text: "Loading kernel modules...", type: "info", delay: 1100 },
   { text: "[  OK  ]  react@19.2.6", type: "ok", delay: 1250 },
@@ -54,20 +94,44 @@ const LINES_EN: BootLine[] = [
   { text: "Starting services...", type: "info", delay: 1870 },
   { text: "[  OK  ]  portfolio.service", type: "ok", delay: 2020 },
   { text: "[  OK  ]  theme.service  →  midnight", type: "ok", delay: 2140 },
-  { text: "[  OK  ]  i18n.service  →  pt / en / es / fr", type: "ok", delay: 2260 },
+  {
+    text: "[  OK  ]  i18n.service  →  pt / en / es / fr",
+    type: "ok",
+    delay: 2260,
+  },
   { text: "", type: "blank", delay: 2380 },
   { text: "████████████████████  100%", type: "progress", delay: 2530 },
   { text: "", type: "blank", delay: 2680 },
-  { text: "Welcome, visitor. Have a good session.", type: "header", delay: 2850 },
+  {
+    text: "Welcome, visitor. Have a good session.",
+    type: "header",
+    delay: 2850,
+  },
 ]
 
 const LINES_ES: BootLine[] = [
-  { text: "LUCAS/OS v1.0.0  ·  Edición Terminal BIOS", type: "header", delay: 0 },
+  {
+    text: "LUCAS/OS v1.0.0  ·  Edición Terminal BIOS",
+    type: "header",
+    delay: 0,
+  },
   { text: "", type: "blank", delay: 180 },
   { text: "Verificando hardware...", type: "info", delay: 360 },
-  { text: "[  OK  ]  CPU: Motor Full Stack  ·  4+ años de uptime", type: "ok", delay: 530 },
-  { text: "[  OK  ]  RAM: Caché de Arquitectura Limpia  ·  16GB", type: "ok", delay: 670 },
-  { text: "[  OK  ]  GPU: Acelerador Framer Motion  ·  60fps", type: "ok", delay: 810 },
+  {
+    text: "[  OK  ]  CPU: Motor Full Stack  ·  4+ años de uptime",
+    type: "ok",
+    delay: 530,
+  },
+  {
+    text: "[  OK  ]  RAM: Caché de Arquitectura Limpia  ·  16GB",
+    type: "ok",
+    delay: 670,
+  },
+  {
+    text: "[  OK  ]  GPU: Acelerador Framer Motion  ·  60fps",
+    type: "ok",
+    delay: 810,
+  },
   { text: "", type: "blank", delay: 950 },
   { text: "Cargando módulos del kernel...", type: "info", delay: 1100 },
   { text: "[  OK  ]  react@19.2.6", type: "ok", delay: 1250 },
@@ -78,20 +142,44 @@ const LINES_ES: BootLine[] = [
   { text: "Iniciando servicios...", type: "info", delay: 1870 },
   { text: "[  OK  ]  portfolio.service", type: "ok", delay: 2020 },
   { text: "[  OK  ]  theme.service  →  midnight", type: "ok", delay: 2140 },
-  { text: "[  OK  ]  i18n.service  →  pt / en / es / fr", type: "ok", delay: 2260 },
+  {
+    text: "[  OK  ]  i18n.service  →  pt / en / es / fr",
+    type: "ok",
+    delay: 2260,
+  },
   { text: "", type: "blank", delay: 2380 },
   { text: "████████████████████  100%", type: "progress", delay: 2530 },
   { text: "", type: "blank", delay: 2680 },
-  { text: "Bienvenido, visitante. Que tengas una buena sesión.", type: "header", delay: 2850 },
+  {
+    text: "Bienvenido, visitante. Que tengas una buena sesión.",
+    type: "header",
+    delay: 2850,
+  },
 ]
 
 const LINES_FR: BootLine[] = [
-  { text: "LUCAS/OS v1.0.0  ·  Édition Terminal BIOS", type: "header", delay: 0 },
+  {
+    text: "LUCAS/OS v1.0.0  ·  Édition Terminal BIOS",
+    type: "header",
+    delay: 0,
+  },
   { text: "", type: "blank", delay: 180 },
   { text: "Vérification du matériel...", type: "info", delay: 360 },
-  { text: "[  OK  ]  CPU: Moteur Full Stack  ·  4+ ans d'uptime", type: "ok", delay: 530 },
-  { text: "[  OK  ]  RAM: Cache Architecture Propre  ·  16GB", type: "ok", delay: 670 },
-  { text: "[  OK  ]  GPU: Accélérateur Framer Motion  ·  60fps", type: "ok", delay: 810 },
+  {
+    text: "[  OK  ]  CPU: Moteur Full Stack  ·  4+ ans d'uptime",
+    type: "ok",
+    delay: 530,
+  },
+  {
+    text: "[  OK  ]  RAM: Cache Architecture Propre  ·  16GB",
+    type: "ok",
+    delay: 670,
+  },
+  {
+    text: "[  OK  ]  GPU: Accélérateur Framer Motion  ·  60fps",
+    type: "ok",
+    delay: 810,
+  },
   { text: "", type: "blank", delay: 950 },
   { text: "Chargement des modules du noyau...", type: "info", delay: 1100 },
   { text: "[  OK  ]  react@19.2.6", type: "ok", delay: 1250 },
@@ -102,7 +190,11 @@ const LINES_FR: BootLine[] = [
   { text: "Démarrage des services...", type: "info", delay: 1870 },
   { text: "[  OK  ]  portfolio.service", type: "ok", delay: 2020 },
   { text: "[  OK  ]  theme.service  →  midnight", type: "ok", delay: 2140 },
-  { text: "[  OK  ]  i18n.service  →  pt / en / es / fr", type: "ok", delay: 2260 },
+  {
+    text: "[  OK  ]  i18n.service  →  pt / en / es / fr",
+    type: "ok",
+    delay: 2260,
+  },
   { text: "", type: "blank", delay: 2380 },
   { text: "████████████████████  100%", type: "progress", delay: 2530 },
   { text: "", type: "blank", delay: 2680 },
@@ -181,14 +273,14 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1 }}
-            className="whitespace-nowrap leading-5"
+            className="leading-5 whitespace-nowrap"
           >
             {line.type === "header" && (
               <span style={{ color: "var(--accent)" }}>{line.text}</span>
             )}
             {line.type === "ok" && (
               <span>
-                <span style={{ color: "var(--success)" }}>[  OK  ]</span>
+                <span style={{ color: "var(--success)" }}>[ OK ]</span>
                 <span className="text-(--muted)">
                   {line.text.replace("[  OK  ]", "")}
                 </span>

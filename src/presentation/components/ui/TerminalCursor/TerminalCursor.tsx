@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
-const INTERACTIVE = 'a, button, input, textarea, select, label, [role="button"], [role="link"]'
+const INTERACTIVE =
+  'a, button, input, textarea, select, label, [role="button"], [role="link"]'
 
 export function TerminalCursor() {
   const [pos, setPos] = useState({ x: -200, y: -200 })
@@ -39,7 +40,7 @@ export function TerminalCursor() {
   return (
     <div
       aria-hidden
-      className={`terminal-cursor${isPointer ? " terminal-cursor--pointer" : ""}`}
+      className={`terminal-cursor${isPointer ? "terminal-cursor--pointer" : ""}`}
       style={{
         left: pos.x,
         top: pos.y,

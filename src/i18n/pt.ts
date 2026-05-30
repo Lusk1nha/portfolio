@@ -301,8 +301,10 @@ export const pt: Translations = {
       success_title: "Mensagem enviada!",
       success_message: "Obrigado pelo contato. Responderei em breve.",
       error_title: "Erro ao enviar",
-      error_message: "Algo deu errado. Tente novamente ou use o email diretamente.",
-      rate_limited_message: "Muitas tentativas. Aguarde um momento antes de enviar novamente.",
+      error_message:
+        "Algo deu errado. Tente novamente ou use o email diretamente.",
+      rate_limited_message:
+        "Muitas tentativas. Aguarde um momento antes de enviar novamente.",
       retry: "Tentar novamente",
     },
   },

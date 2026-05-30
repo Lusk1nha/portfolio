@@ -76,7 +76,8 @@ export function ContactSection() {
   const inputClass =
     "w-full rounded-sm border border-(--border) bg-(--surface-2) px-3 py-2 text-[12px] text-(--fg) placeholder:text-(--muted) outline-none transition-colors focus:border-(--accent)/60 focus:ring-1 focus:ring-(--accent)/20"
 
-  const labelClass = "block mb-1 text-[10px] font-medium tracking-widest text-(--muted) uppercase"
+  const labelClass =
+    "block mb-1 text-[10px] font-medium tracking-widest text-(--muted) uppercase"
 
   return (
     <section className="px-4 py-16 sm:px-6">
@@ -248,7 +249,9 @@ export function ContactSection() {
                     type="submit"
                     variant="default"
                     size="lg"
-                    disabled={formState === "submitting" || formState === "ratelimited"}
+                    disabled={
+                      formState === "submitting" || formState === "ratelimited"
+                    }
                     className="w-full sm:w-auto"
                   >
                     {formState === "submitting"

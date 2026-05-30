@@ -134,8 +134,10 @@ export const en: Translations = {
       success_title: "Message sent!",
       success_message: "Thanks for reaching out. I'll get back to you soon.",
       error_title: "Failed to send",
-      error_message: "Something went wrong. Try again or use the email directly.",
-      rate_limited_message: "Too many attempts. Please wait a moment before sending again.",
+      error_message:
+        "Something went wrong. Try again or use the email directly.",
+      rate_limited_message:
+        "Too many attempts. Please wait a moment before sending again.",
       retry: "Try again",
     },
   },

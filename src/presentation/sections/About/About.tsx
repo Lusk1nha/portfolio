@@ -48,7 +48,10 @@ export function About() {
                 variants={cardVariants}
                 className="overflow-hidden rounded-sm border border-(--border) bg-(--surface)"
               >
-                <div className="h-0.5" style={{ background: "var(--accent)" }} />
+                <div
+                  className="h-0.5"
+                  style={{ background: "var(--accent)" }}
+                />
                 <div className="p-5">
                   <div className="mb-3 flex items-center gap-2">
                     <Icon

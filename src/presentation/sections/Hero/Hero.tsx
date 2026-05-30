@@ -132,7 +132,7 @@ export function Hero() {
                       animate={{ opacity: 1, y: -8, scale: 1 }}
                       exit={{ opacity: 0, y: -16, scale: 0.9 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm border border-(--accent)/40 bg-(--surface) px-2.5 py-1 text-[10px] text-(--accent) shadow-lg"
+                      className="absolute -top-9 left-1/2 -translate-x-1/2 rounded-sm border border-(--accent)/40 bg-(--surface) px-2.5 py-1 text-[10px] whitespace-nowrap text-(--accent) shadow-lg"
                     >
                       try 'secret' in the terminal
                     </motion.div>
@@ -222,7 +222,9 @@ export function Hero() {
             >
               <div className="flex items-center gap-1.5 text-[11px] text-(--muted)">
                 <GraduationCapIcon size={11} />
-                <span>ADS · FAM – Centro Universitário das Américas · 2021–2023</span>
+                <span>
+                  ADS · FAM – Centro Universitário das Américas · 2021–2023
+                </span>
               </div>
               <div className="flex items-center gap-1.5 text-[11px] text-(--muted)">
                 <TranslateIcon size={11} />
