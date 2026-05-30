@@ -257,7 +257,7 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
     <motion.div
       animate={{ opacity: fading ? 0 : 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-[9999] flex flex-col overflow-hidden bg-(--bg) px-5 py-8 font-mono text-[11px] sm:px-16 sm:py-14 sm:text-[12px]"
+      className="fixed inset-0 z-9999 flex flex-col overflow-hidden bg-(--bg) px-5 py-8 font-mono text-[11px] sm:px-16 sm:py-14 sm:text-[12px]"
       onClick={dismiss}
     >
       {/* Logo */}
