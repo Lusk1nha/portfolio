@@ -17,6 +17,8 @@ interface CvDownloadButtonProps {
 }
 
 export function CvDownloadButton({ language, t }: CvDownloadButtonProps) {
+  if (typeof window === "undefined") return null
+
   return (
     <PDFDownloadLink
       document={<CvDocument language={language} t={t} />}

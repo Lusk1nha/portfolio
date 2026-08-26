@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
-import { SunIcon, MoonIcon } from "@phosphor-icons/react"
+import { createPortal } from "react-dom"
+import { SunIcon, MoonIcon, ShuffleIcon } from "@phosphor-icons/react"
 import { useTheme } from "@/presentation/contexts/ThemeContext"
 import { motion, AnimatePresence } from "framer-motion"
 import type { Theme } from "@/domain/entities/Theme"
@@ -53,7 +54,7 @@ function ThemeSwatch({
 }
 
 export function ThemeSwitcher() {
-  const { theme, themeData, themes, setTheme } = useTheme()
+  const { theme, themeData, themes, setTheme, autoCycle, toggleAutoCycle } = useTheme()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -70,23 +71,76 @@ export function ThemeSwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
+  // Toast whenever the theme changes while auto-cycling
+  useEffect(() => {
+    if (!autoCycle) return
+    setToast(themeData.label)
+    const id = setTimeout(() => setToast(null), 2500)
+    return () => clearTimeout(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme, autoCycle])
+
+  const [toast, setToast] = useState<string | null>(null)
+
   const ModeIcon = themeData.mode === "dark" ? MoonIcon : SunIcon
 
   return (
     <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="flex h-8 items-center gap-1.5 rounded-sm border border-(--border) bg-(--surface) px-2.5 text-[11px] text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--fg)"
-        aria-label="Switch theme"
-      >
-        {/* Current accent dot */}
-        <span
-          className="size-2 shrink-0 rounded-full"
-          style={{ background: themeData.accent }}
-        />
-        <span className="hidden max-w-18 truncate sm:inline">{theme}</span>
-        <ModeIcon size={11} className="ml-0.5 shrink-0" />
-      </button>
+      <div className="flex items-center gap-1.5">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="flex h-8 items-center gap-1.5 rounded-sm border border-(--border) bg-(--surface) px-2.5 text-[11px] text-(--muted) transition-all hover:border-(--accent)/50 hover:text-(--fg)"
+          aria-label="Switch theme"
+        >
+          {/* Current accent dot */}
+          <span
+            className="size-2 shrink-0 rounded-full"
+            style={{ background: themeData.accent }}
+          />
+          <span className="hidden max-w-18 truncate sm:inline">{theme}</span>
+          <ModeIcon size={11} className="ml-0.5 shrink-0" />
+        </button>
+
+        <button
+          onClick={toggleAutoCycle}
+          title={autoCycle ? "Stop random theme cycling" : "Cycle themes randomly"}
+          aria-pressed={autoCycle}
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border transition-all ${
+            autoCycle
+              ? "border-(--accent) bg-(--accent)/10 text-(--accent)"
+              : "border-(--border) bg-(--surface) text-(--muted) hover:border-(--accent)/50 hover:text-(--fg)"
+          }`}
+        >
+          <ShuffleIcon size={13} />
+        </button>
+      </div>
+
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {toast && (
+            <motion.div
+              initial={{ opacity: 0, y: 16, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className="fixed right-6 bottom-6 z-[100] flex items-center gap-2.5 rounded-md border-2 bg-(--surface-2) px-4 py-3 text-sm whitespace-nowrap text-(--fg) shadow-2xl"
+              style={{
+                borderColor: "var(--accent)",
+                boxShadow: "0 0 24px -4px var(--accent)",
+              }}
+            >
+              <span
+                className="size-2.5 shrink-0 animate-pulse rounded-full"
+                style={{ background: "var(--accent)" }}
+              />
+              <span className="text-(--muted)">Tema:</span>
+              <span className="font-semibold text-(--accent)">{toast}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
 
       <AnimatePresence>
         {open && (

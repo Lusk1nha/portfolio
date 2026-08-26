@@ -51,6 +51,18 @@
   </url>
 
   <url>
+    <loc>https://lucaspedro.dev/clients</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucaspedro.dev/clients"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://lucaspedro.dev/clients"/>
+    <xhtml:link rel="alternate" hreflang="es"    href="https://lucaspedro.dev/clients"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://lucaspedro.dev/clients"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucaspedro.dev/clients"/>
+  </url>
+
+  <url>
     <loc>https://lucaspedro.dev/contact</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>yearly</changefreq>

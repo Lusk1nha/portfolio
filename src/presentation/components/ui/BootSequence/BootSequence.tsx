@@ -216,6 +216,7 @@ const SKIP_LABEL: Record<Language, string> = {
 }
 
 export function shouldShowBoot() {
+  if (typeof window === "undefined") return false
   return !sessionStorage.getItem(STORAGE_KEY)
 }
 

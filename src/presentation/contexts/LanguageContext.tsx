@@ -20,6 +20,8 @@ const LanguageContext = createContext<LanguageContextValue | null>(null)
 const TRANSLATIONS: Record<Language, Translations> = { pt, en, es, fr }
 
 function resolveStoredLanguage(): Language {
+  if (typeof window === "undefined") return DEFAULT_LANGUAGE
+
   const stored = localStorage.getItem(STORAGE_KEY) as Language | null
   if (stored && LANGUAGES.includes(stored)) return stored
   return DEFAULT_LANGUAGE
