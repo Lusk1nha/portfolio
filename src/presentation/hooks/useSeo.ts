@@ -8,7 +8,7 @@ interface SeoOptions {
 
 const BASE_TITLE = "Lucas Pedro da Hora"
 const BASE_DESCRIPTION =
-  "Full Stack Developer especialista em React, Node.js e Rust. 4+ anos construindo sistemas web de alta performance com foco em arquitetura escalável, DDD e integração de IA."
+  "Full Stack Developer specializing in React, Node.js and Rust. 4+ years building high-performance web systems with a focus on scalable architecture, DDD and AI integration."
 const BASE_URL = "https://lucaspedro.dev"
 
 export interface ResolvedSeo {
