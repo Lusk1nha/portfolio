@@ -4,6 +4,7 @@ export interface Translations {
     projects: string
     experience: string
     stack: string
+    clients: string
     contact: string
     cv: string
   }
@@ -59,6 +60,7 @@ export interface Translations {
       senior: string
     }
     stack_label: string
+    timeline_chart: string
   }
   projects: {
     title: string
@@ -77,10 +79,14 @@ export interface Translations {
     }
     no_projects: string
     featured_title: string
+    language_chart: string
+    stars_chart: string
   }
   stack: {
     title: string
     subtitle: string
+    proficiency: string
+    radar: string
     groups: {
       frontend: string
       backend: string
@@ -89,6 +95,11 @@ export interface Translations {
       architecture: string
       tools: string
     }
+  }
+  clients: {
+    title: string
+    subtitle: string
+    note: string
   }
   contact: {
     title: string
@@ -173,6 +184,7 @@ export const pt: Translations = {
     projects: "~/projetos",
     experience: "~/experiencia",
     stack: "~/stack",
+    clients: "~/clientes",
     contact: "~/contato",
     cv: "~/curriculo",
   },
@@ -241,6 +253,7 @@ export const pt: Translations = {
       senior: "Sênior",
     },
     stack_label: "Stack:",
+    timeline_chart: "$ git log --graph --career",
   },
   projects: {
     title: "Projetos",
@@ -259,10 +272,14 @@ export const pt: Translations = {
     },
     no_projects: "Nenhum projeto encontrado.",
     featured_title: "Projetos em Destaque",
+    language_chart: "$ du -h --by-language",
+    stars_chart: "$ top --sort=stars",
   },
   stack: {
     title: "Stack",
     subtitle: "$ cat package.json | jq .dependencies",
+    proficiency: "$ top --sort=level",
+    radar: "$ radar --scan-groups",
     groups: {
       frontend: "Frontend",
       backend: "Backend",
@@ -271,6 +288,11 @@ export const pt: Translations = {
       architecture: "Arquitetura",
       tools: "Ferramentas",
     },
+  },
+  clients: {
+    title: "Clientes",
+    subtitle: "$ ls -la ~/clients",
+    note: "Nunca assinei acordo de confidencialidade sobre esses projetos, mas por respeito aos ex-empregadores compartilho apenas o nome do cliente e o tipo de projeto, sem detalhes internos.",
   },
   contact: {
     title: "Contato",

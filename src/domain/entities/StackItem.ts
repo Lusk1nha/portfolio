@@ -12,4 +12,5 @@ export interface StackItem {
   readonly group: StackGroup
   readonly icon?: string
   readonly featured: boolean
+  readonly level?: number
 }

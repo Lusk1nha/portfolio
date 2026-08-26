@@ -11,6 +11,7 @@ const NAV_ROUTES = [
   { key: "projects", path: "/projects" },
   { key: "experience", path: "/experience" },
   { key: "stack", path: "/stack" },
+  { key: "clients", path: "/clients" },
   { key: "contact", path: "/contact" },
   { key: "cv", path: "/cv" },
 ] as const
@@ -25,6 +26,7 @@ export function Header() {
     projects: t.nav.projects,
     experience: t.nav.experience,
     stack: t.nav.stack,
+    clients: t.nav.clients,
     contact: t.nav.contact,
     cv: t.nav.cv,
   }

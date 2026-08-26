@@ -10,6 +10,8 @@ import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionT
 import { Card } from "@/presentation/components/ui/Card/Card"
 import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
+import { ProjectLanguageDonut } from "@/presentation/components/ui/ProjectLanguageDonut/ProjectLanguageDonut"
+import { ProjectStarsBar } from "@/presentation/components/ui/ProjectStarsBar/ProjectStarsBar"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
 import { useSeo } from "@/presentation/hooks/useSeo"
 import { localText } from "@/domain/value-objects/LocalText"
@@ -46,10 +48,61 @@ export function ProjectsPage() {
     getAllProjects.execute().then(setProjects)
   }, [])
 
+  const languageData = Object.entries(
+    projects.reduce<Record<string, number>>((acc, p) => {
+      if (!p.language) return acc
+      acc[p.language] = (acc[p.language] ?? 0) + 1
+      return acc
+    }, {})
+  )
+    .map(([language, count]) => ({ language, count }))
+    .sort((a, b) => b.count - a.count)
+
+  const starsData = projects
+    .filter((p): p is Project & { stars: number } => p.stars !== undefined)
+    .sort((a, b) => b.stars - a.stars)
+    .map((p) => ({ name: p.name, stars: p.stars, forks: p.forks ?? 0 }))
+
   return (
     <div className="px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <SectionTitle title={t.projects.title} subtitle={t.projects.subtitle} />
+
+        {(languageData.length > 0 || starsData.length > 0) && (
+          <div className="mb-6 grid gap-6 lg:grid-cols-2">
+            {languageData.length > 0 && (
+              <div className="overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono">
+                <div className="flex items-center gap-2 border-b border-(--border) px-4 py-2.5">
+                  <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="size-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="size-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-3 text-[11px] text-(--muted)">
+                    {t.projects.language_chart}
+                  </span>
+                </div>
+                <div className="p-4">
+                  <ProjectLanguageDonut data={languageData} />
+                </div>
+              </div>
+            )}
+
+            {starsData.length > 0 && (
+              <div className="overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono">
+                <div className="flex items-center gap-2 border-b border-(--border) px-4 py-2.5">
+                  <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="size-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="size-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-3 text-[11px] text-(--muted)">
+                    {t.projects.stars_chart}
+                  </span>
+                </div>
+                <div className="p-4 pl-1">
+                  <ProjectStarsBar data={starsData} />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         <motion.div
           variants={containerVariants}

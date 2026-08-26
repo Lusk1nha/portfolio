@@ -3,6 +3,7 @@ import { MapPinIcon, CalendarIcon } from "@phosphor-icons/react"
 import { SectionTitle } from "@/presentation/components/ui/SectionTitle/SectionTitle"
 import { Tag } from "@/presentation/components/ui/Tag/Tag"
 import { Badge } from "@/presentation/components/ui/Badge/Badge"
+import { ExperienceGantt } from "@/presentation/components/ui/ExperienceGantt/ExperienceGantt"
 import { useLanguage } from "@/presentation/contexts/LanguageContext"
 import { localText, localTextArray } from "@/domain/value-objects/LocalText"
 import { StaticExperienceRepository } from "@/infrastructure/repositories/StaticExperienceRepository"
@@ -36,6 +37,33 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
             subtitle={t.experience.subtitle}
           />
         </div>
+
+        {!compact && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
+            className="mb-6 overflow-hidden rounded-sm border border-(--border) bg-(--surface) font-mono"
+          >
+            <div className="flex items-center gap-2 border-b border-(--border) px-4 py-2.5">
+              <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="size-2.5 rounded-full bg-[#febc2e]" />
+              <span className="size-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-[11px] text-(--muted)">
+                {t.experience.timeline_chart}
+              </span>
+            </div>
+            <div className="p-4 pl-1">
+              <ExperienceGantt
+                experiences={experiences}
+                levelLabels={t.experience.level}
+                presentLabel={t.experience.present}
+                language={language}
+              />
+            </div>
+          </motion.div>
+        )}
 
         <div className="space-y-6">
           {displayed.map((exp, i) => (

@@ -6,6 +6,7 @@ export const es: Translations = {
     projects: "~/proyectos",
     experience: "~/experiencia",
     stack: "~/stack",
+    clients: "~/clientes",
     contact: "~/contacto",
     cv: "~/cv",
   },
@@ -74,6 +75,7 @@ export const es: Translations = {
       senior: "Senior",
     },
     stack_label: "Stack:",
+    timeline_chart: "$ git log --graph --carrera",
   },
   projects: {
     title: "Proyectos",
@@ -92,10 +94,14 @@ export const es: Translations = {
     },
     no_projects: "No se encontraron proyectos.",
     featured_title: "Proyectos Destacados",
+    language_chart: "$ du -h --by-language",
+    stars_chart: "$ top --sort=stars",
   },
   stack: {
     title: "Stack",
     subtitle: "$ cat package.json | jq .dependencies",
+    proficiency: "$ top --sort=level",
+    radar: "$ radar --scan-groups",
     groups: {
       frontend: "Frontend",
       backend: "Backend",
@@ -104,6 +110,11 @@ export const es: Translations = {
       architecture: "Arquitectura",
       tools: "Herramientas",
     },
+  },
+  clients: {
+    title: "Clientes",
+    subtitle: "$ ls -la ~/clients",
+    note: "Nunca firmé un acuerdo de confidencialidad sobre estos proyectos, pero por respeto a mis antiguos empleadores solo comparto el nombre del cliente y el tipo de proyecto, sin detalles internos.",
   },
   contact: {
     title: "Contacto",
